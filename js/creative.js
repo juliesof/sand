@@ -22,6 +22,14 @@ jQuery(document).ready(function($) {
 		touchDrag: true,
 		center: true
 	});
+
+	// Isotope
+	//Front Page Primary Categories Section
+	var $servicesGrid = $('#primary-categories').imagesLoaded( function(){
+		$servicesGrid.isotope({
+			itemSelector: '.fp-category-item'
+		});
+	}); // end frontpage GALLERIES function
 }); //end document.ready()
 
 		
