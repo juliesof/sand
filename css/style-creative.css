@@ -1,0 +1,51 @@
+.header-color {
+	
+}
+.superscript-header-infobar {
+	background-color: #81E9D3; /*riptide*/
+	color: #333;
+	width: 100%;
+	padding-left: 150px;
+	padding-right: 150px;
+}
+.container {
+	flex-direction: column;
+}
+
+/* Owl Carousel Hero */
+#hero {
+	position: relative;
+	height: calc(100vh - 82px);
+	max-height: 56.25vw;/*same height as slider photos 16/9 aspect ratio*/
+}
+.hero-image-wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.cb-slider {
+	position: absolute;
+}
+.owl-carousel div {
+	width: 100%;
+}
+.owl-carousel img {
+	max-height: 600px;
+}
+#hero .owl-nav,
+#hero .owl-dots {
+	position: absolute;
+	color: #fff;
+	width: 100vw;
+	display: flex;
+}
+.owl-nav {
+	top: 27vw;
+	justify-content: space-between;
+	padding-left: 1rem;
+	padding-right: 1rem;
+}
+.owl-dots {
+	bottom: 0;
+	justify-content: center;
+}
