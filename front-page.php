@@ -9,7 +9,7 @@
 get_header();
 ?>
 
-	<div class="container-fluid" id="content-frontpage" tabindex="-1">
+	<div id="content-frontpage" tabindex="-1">
 
 		<main class="site-main" id="main">
 
@@ -28,13 +28,11 @@ get_header();
 
 					 //get_template_part( 'frontpage-templates/frontpage', 'services' ); 
 			 
-				endwhile; 
-			endif; // end flexible content loop  
-
-		 endwhile; // end of the loop. ?>
+					endwhile;
+				endif; // end flexible content loop  
 			
+			endwhile; // end of the loop. ?>
 
-			
 		</main><!-- #main -->
 			
 </div><!-- Container end -->

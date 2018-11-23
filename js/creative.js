@@ -8,6 +8,23 @@
 
 jQuery(document).ready(function($) {
 
+	// size hero section to fill viewport
+	if ($('body').hasClass('home')){
+		var $hero = $('#hero');
+		function heroHeight(){
+			if( $(window).width() > 992 ) {
+				var	$navbar = $('#wrapper-navbar');
+					$height = $(window).height() - $navbar.height();
+				$hero.css({'height':$height});
+			}else {
+				$hero.css({'height':'50vh'});
+			}
+		}
+		//run on page load
+		heroHeight();
+		//run on page resize
+		$(window).resize(heroHeight);
+	}
 	// Owl Carousel
 	var $owlCarousel = $('.owl-carousel');
 	//include owl carousel
@@ -25,11 +42,16 @@ jQuery(document).ready(function($) {
 
 	// Isotope
 	//Front Page Primary Categories Section
-	var $servicesGrid = $('#primary-categories').imagesLoaded( function(){
-		$servicesGrid.isotope({
-			itemSelector: '.fp-category-item'
-		});
-	}); // end frontpage GALLERIES function
+	var $categoryGrid = $('.category-grid');
+	$categoryGrid.isotope({
+		itemSelector: '.fp-category-item',
+		masonry: {
+			columnWidth: '.fp-grid-sizer'
+		},
+		percentPosition: true,
+	});
+	// end frontpage GALLERIES function
+
 }); //end document.ready()
 
 		
