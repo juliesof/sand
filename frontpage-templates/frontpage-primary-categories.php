@@ -30,7 +30,7 @@
 ?>
 
 	<section id="primary-categories">
-		<article id="<?php echo $category_list[0]['name'] ?>" class="fp-category-item fp-size-half"
+		<article id="<?php echo $category_list[0]['name'] ?>" class=" fp-size-half"
 			<?php
 				// get srcset and image attributes
 	 			$id			= $category_list[0]['image'];
@@ -49,7 +49,7 @@
 				>
 			</div>
 		</article>
-		<article id="<?php echo $category_list[1]['name'] ?>" class="fp-category-item fp-size-quarter"
+		<article id="<?php echo $category_list[1]['name'] ?>" class=" fp-size-quarter"
 			<?php
 				// get srcset and image attributes
 	 			$id			= $category_list[1]['image'];
@@ -68,7 +68,7 @@
 				>
 			</div>
 		</article>
-		<article id="<?php echo $category_list[2]['name'] ?>" class="fp-category-item fp-size-eighth"
+		<article id="<?php echo $category_list[2]['name'] ?>" class=" fp-size-eighth"
 			<?php
 				// get srcset and image attributes
 	 			$id			= $category_list[2]['image'];
@@ -87,7 +87,7 @@
 				>
 			</div>
 		</article>
-		<article id="<?php echo $category_list[3]['name'] ?>" class="fp-category-item fp-size-eighth"
+		<article id="<?php echo $category_list[3]['name'] ?>" class=" fp-size-eighth"
 			<?php
 				// get srcset and image attributes
 	 			$id			= $category_list[3]['image'];

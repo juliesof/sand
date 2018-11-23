@@ -51,3 +51,11 @@
 }
 
 /*Frontpage Primary Categories*/
+.fp-size-half {
+	width: 40%;
+	height: 440px;
+}
+.fp-size-quart {
+	width: 55%;
+	height: 220px;
+}
