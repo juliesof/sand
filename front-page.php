@@ -28,15 +28,16 @@ get_header();
 
 						// Brand Logo Bar
 						if ( get_row_layout() == 'brand_bar' )
-							get_template_part( 'frontpage-template/frontpage', 'brands' );
+							get_template_part( 'frontpage-templates/frontpage', 'brands' );
 
 						// About Section
 						if ( get_row_layout() == 'about_store' )
-							get_template_part( 'frontpage-template/frontpage', 'about' );
+							get_template_part( 'frontpage-templates/frontpage', 'about' );
 
 						// Secondary Categories
 						if ( get_row_layout() == 'secondary_categories' )
-							get_template_part( 'frontpage-template/seconfary-categories' );			 
+							get_template_part( 'frontpage-templates/frontpage', 'secondary-categories' );	
+									 
 					endwhile; 
 				endif; // end flexible content loop  
 

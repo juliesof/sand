@@ -10,7 +10,7 @@
 ?>
 <section id="hero" class="container-fluid">
 	<div class="row">
-		<div class="owl-carousel cb-slider">
+		<div id="hero-carousel" class="owl-carousel cb-hero-slider">
 			<?php if( have_rows( 'hero_images' )): 
 				while ( have_rows( 'hero_images' ) ) : the_row();
 				
