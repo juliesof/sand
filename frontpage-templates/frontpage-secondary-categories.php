@@ -15,7 +15,7 @@
 ?>
  
 <section id="secondary-featured" class="container">
-	<div class="row no-gutters">
+	<div class="row no-gutters content-wrapper">
 		<div id="featured-block" class="col-md-6">
 			<div id="featured-carousel" class="owl-carousel">
 				<?php 
@@ -39,7 +39,6 @@
 						>
 						<div class="overlay-title">
 							<?php
-
 								$title = get_sub_field( 'featured_title' );
 								$link  = get_sub_field( 'featured_link' );
 							?>

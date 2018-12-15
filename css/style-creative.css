@@ -9,6 +9,7 @@
 * Frontpage Hero
 * Frontpage Primary Categories
 * Frontpage About
+* Frontpage Featured and Secondary
 
 	Extra Small Devices
 * Frontpage Hero
@@ -178,15 +179,22 @@
 	text-align: center;
 	max-width: 80%;
 }
-/* Frontpage Featured and Secondary */
+/*----- Frontpage Featured and Secondary */
 #secondary-featured {
 	height: 750px;
 }
-#secondary-featured {
+/* Featured Block */
+/*#secondary-featured {
 	display: none;
-}
+}*/
 #featured-block {
 	padding: 60px;
+}
+/* center image */
+.featured-slide {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 .featured-slide .overlay-title {
 	position: absolute;
@@ -234,22 +242,26 @@
 	#hero {
 		height: 100vh;
 	}
-	/* Featured and Secondary section */
+	/*----- Featured and Secondary section */
 	#secondary-featured {
 		height: 90vh;
 	}
-	#secondary-featured .row {
+	#secondary-featured .content-wrapper {
 		height: 100%;
 	}
 	/* Featured */
-	#featured-carousel {
+	#featured-carousel,
+	.owl-stage-outer,
+	.owl-stage,
+	.owl-item {
 		height: 100%;
 	}
-	.owl-carousel .owl-stage {
-		display: flex;
+	.featured-slide {
+		height: 100%;
 	}
-	.owl-carousel .owl-item img {
+	#featured-carousel .featured-slide img {
 		width: auto;
 		height: 100%;
+		max-width: unset;
 	}
 }
