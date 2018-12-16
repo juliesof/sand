@@ -106,6 +106,7 @@ var $body = $('body');
 
 	//check if currently on the store tour page
 	if( $body.hasClass('page-template-page-store-tour') ) {
+		// Store Tour isotope gallery tiles
 		var $tourGallery = $('#store-tour-gallery').isotope({
 			itemSelector: '.tour-tile',
 			percentPosition: true,
@@ -113,6 +114,10 @@ var $body = $('body');
 			masonry: {
 				columnWidth: '.tour-tile-sizer',
 			},
+		});
+		// Store Tour featherlight gallery
+		$('a.tour-tile').featherlight({
+			targetAttr: 'href'
 		});
 	}
 

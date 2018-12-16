@@ -26,8 +26,10 @@ get_header();
 			<section id="store-tour-gallery">
 				<div class="tour-tile-sizer"></div>
 				<?php
+					$i = 0;
 					if( have_rows('store_tour') ):
 						while( have_rows('store_tour') ) : the_row();
+							$tour_title = get_sub_field( 'title' );
 							$tour_img = get_sub_field( 'image' );
 							$tour_text = get_sub_field( 'text' );
 							$tour_categories = get_sub_field( 'category' );
@@ -36,7 +38,7 @@ get_header();
 							$image_url = wp_get_attachment_image_url( $tour_img, "med-large" );
 							$img_alt = get_post_meta( $tour_img, '_wp_attachment_image_alt', true);
 				?>
-							<div class="tour-tile">
+							<a href="#tour-tile-<?php echo $i ?>" class="tour-tile" data-featherlight="image">
 								<div class="tile-content-wrapper">
 									<div class="tile-image-wrapper">
 										<img 
@@ -46,12 +48,31 @@ get_header();
 											alt = "<?php echo $image_alt; ?>"
 										>
 									</div>
-									<h3 class="tour-text">
-										<?php echo $tour_text ?>
-									</h3>
+									<h4 class="tour-text">
+										<?php echo $tour_title ?>
+									</h4>
+									<div class="hover-overlay">
+										<div class="cross-box">
+											<div class="cross-background">
+												<div id="cross"></div>
+											</div>
+										</div>
+									</div>
 								</div>
-							</div><!-- .tour-tile -->
-						<?php endwhile; endif;?>
+							</a><!-- .tour-tile -->
+							<div id="tour-tile-<?php echo $i ?>" class="tile-featherlight">
+								<div class="row no-gutters">
+									<div class="col-md-4">
+										<img 
+											src="<?php echo esc_attr( $image_url ); ?>" 
+											srcset = "<?php echo esc_attr( $image_srcset ); ?>"
+											sizes = "(min-width: 992px) 33vw, 100vw"
+											alt = "<?php echo $image_alt; ?>"
+										>
+									</div>
+								</div>
+							</div>
+						<?php $num++; endwhile; endif;?>
 			</section>
 		</div>
 	</div><!-- #st-content-wrapper -->		
