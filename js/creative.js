@@ -8,8 +8,11 @@
 
 jQuery(document).ready(function($) {
 
-	// size hero section to fill viewport
-	if ($('body').hasClass('home')){
+var $body = $('body');
+	
+	// check if on the homepage
+	if( $body.hasClass('home') ){
+		// size hero section to fill viewport
 		var $hero = $('#hero');
 		function heroHeight(){
 			if( $(window).width() > 992 && $(window).height() < $(window).width()){
@@ -43,63 +46,75 @@ jQuery(document).ready(function($) {
 				$fpAboutImg.css({"transform" : ""});
 			}
 		});
+
+		// Hero Owl Carousel
+		var $heroCarousel = $('#hero-carousel');
+		//include owl carousel
+		$heroCarousel.owlCarousel({
+			items: 1,
+			loop: true,
+			//autoplay: true,
+			animateIn: "fadeIn",
+			animateOut: "fadeOut",
+			lazyLoad: true,
+			mouseDrag: true,
+			touchDrag: true,
+			center: true
+		});
+
+		// Isotope
+		//Front Page Primary Categories Section
+		var $categoryGrid = $('.category-grid');
+		$categoryGrid.isotope({
+			itemSelector: '.fp-category-item',
+			masonry: {
+				columnWidth: '.fp-grid-sizer'
+			},
+			percentPosition: true,
+		});
+		// end frontpage GALLERIES function
+
+		// Front Page Brand Owl Carousel
+		var $brandCarousel = $('#brand-carousel');
+		$brandCarousel.owlCarousel({
+			items: 3,
+			loop: true,
+			//autoplay: true,
+			animateIn: "fadeIn",
+			animateOut: "fadeOut",
+			lazyLoad: true,
+			mouseDrag: true,
+			touchDrag: true,
+			center: true,
+			margin: 50,
+		});
+
+		// Front Page Featured Items
+		var $featuredCarousel = $('#featured-carousel');
+		$featuredCarousel.owlCarousel({
+			items: 1,
+			loop: true,
+			//autoplay: true,
+			animateIn: "fadeIn",
+			animateOut: "fadeOut",
+			lazyLoad: true,
+			mouseDrag: true,
+			touchDrag: true,
+			center: true,
+		});
 	}
-	// Hero Owl Carousel
-	var $heroCarousel = $('#hero-carousel');
-	//include owl carousel
-	$heroCarousel.owlCarousel({
-		items: 1,
-		loop: true,
-		//autoplay: true,
-		animateIn: "fadeIn",
-		animateOut: "fadeOut",
-		lazyLoad: true,
-		mouseDrag: true,
-		touchDrag: true,
-		center: true
-	});
 
-	// Isotope
-	//Front Page Primary Categories Section
-	var $categoryGrid = $('.category-grid');
-	$categoryGrid.isotope({
-		itemSelector: '.fp-category-item',
-		masonry: {
-			columnWidth: '.fp-grid-sizer'
-		},
-		percentPosition: true,
-	});
-	// end frontpage GALLERIES function
-
-	// Front Page Brand Owl Carousel
-	var $brandCarousel = $('#brand-carousel');
-	$brandCarousel.owlCarousel({
-		items: 3,
-		loop: true,
-		//autoplay: true,
-		animateIn: "fadeIn",
-		animateOut: "fadeOut",
-		lazyLoad: true,
-		mouseDrag: true,
-		touchDrag: true,
-		center: true,
-		margin: 50,
-	});
-
-	// Front Page Featured Items
-	var $featuredCarousel = $('#featured-carousel');
-	$featuredCarousel.owlCarousel({
-		items: 1,
-		loop: true,
-		//autoplay: true,
-		animateIn: "fadeIn",
-		animateOut: "fadeOut",
-		lazyLoad: true,
-		mouseDrag: true,
-		touchDrag: true,
-		center: true,
-	});
-
+	//check if currently on the store tour page
+	if( $body.hasClass('page-template-page-store-tour') ) {
+		var $tourGallery = $('#store-tour-gallery').isotope({
+			itemSelector: '.tour-tile',
+			percentPosition: true,
+			stagger: 10,
+			masonry: {
+				columnWidth: '.tour-tile-sizer',
+			},
+		});
+	}
 
 }); //end document.ready()
 

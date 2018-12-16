@@ -10,6 +10,7 @@
 * Frontpage Primary Categories
 * Frontpage About
 * Frontpage Featured and Secondary
+* Store Tour Page
 
 	Extra Small Devices
 * Frontpage Hero
@@ -219,6 +220,45 @@
 	height: auto;
 }
 
+/*----- Store Tour Page*/
+.tour-tile,
+.tour-tile-sizer {
+	width: 100%;
+	padding: 10px;
+}
+.tile-content-wrapper {
+	position: relative;
+}
+.tile-image-wrapper {
+	height: 0;
+	padding-top: 62.5%;
+	position: relative;	
+	overflow: hidden;
+}
+.tile-content-wrapper img {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	max-width: unset;
+	width: 100%;
+	height: auto;
+}
+.tour-text {
+	color: #fff;
+	position: absolute;
+	top: 50%;
+	left: 0;
+	transform: translateY(-50%);
+	width: 100%;
+}
+@media(min-width: 567px) {
+	/*----- Store Tour Page*/
+	.tour-tile,
+	.tour-tile-sizer {
+		width:  50%;
+	}
+}
 @media(min-width: 768px) {
 	.fp-category-item {
 		width: 10%;
@@ -263,5 +303,12 @@
 		width: auto;
 		height: 100%;
 		max-width: unset;
+	}
+}
+@media(min-width: 1200px) {
+	/*----- Store Tour Page*/
+	.tour-tile,
+	.tour-tile-sizer {
+		width: 33%;
 	}
 }
