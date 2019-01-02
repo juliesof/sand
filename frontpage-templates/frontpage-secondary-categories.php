@@ -55,33 +55,35 @@
 			</div><!-- #featured-carousel -->
 		</div><!-- #featured-block -->
 		<div id="secondary-block" class="col-md-6">
-			<div class="secondary-flex-box d-flex">
-				<div class="secondary-category-block block-1">
+			<?php 
+			//retrieve and store the two categories' meta information
+				if( have_rows( 'secondary_blocks' )): 
+				while( have_rows( 'secondary_blocks' )) : the_row(); 
+					
+					// Secondary Category 1
+					//image
+					$cat_img1 		= get_sub_field( 'category_image_1' );
+					$image_srcset1 	= wp_get_attachment_image_srcset( $cat_img1, 'large' );
+					$image_url1		= wp_get_attachment_image_url( $cat_img1, 'medium' );
+					$alt1			= get_post_meta( $cat_img1, '_wp_attachment_image_alt', true );
+					//title and link
+					$cat_title1		= get_sub_field( 'category_title_1' );
+					$cat_link1		= get_sub_field( 'category_link_1' );
+					
+					// Secondary Category 2
+					//image
+					$cat_img2 		= get_sub_field( 'category_image_2' );
+					$image_srcset2 	= wp_get_attachment_image_srcset( $cat_img2, 'large' );
+					$image_url2		= wp_get_attachment_image_url( $cat_img2, 'medium' );
+					$alt2			= get_post_meta( $cat_img2, '_wp_attachment_image_alt', true );
+					//title and link
+					$cat_title2		= get_sub_field( 'category_title_2' );
+					$cat_link2		= get_sub_field( 'category_link_2' );
+				endwhile;endif;
+			?>
+			<div class="secondary-box">
+				<a href="<?php echo esc_attr($cat_link1); ?>" class="secondary-category-block block-1">
 					<div class="secondary-image-frame">
-						<?php if( have_rows( 'secondary_blocks' )): 
-							while( have_rows( 'secondary_blocks' )) : the_row(); 
-								
-								// Secondary Category 1
-								//image
-								$catImg1 		= get_sub_field( 'category_image_1' );
-								$image_srcset1 	= wp_get_attachment_image_srcset( $catImg1, 'large' );
-								$image_url1		= wp_get_attachment_image_url( $catImg1, 'medium' );
-								$alt1			= get_post_meta( $catImg1, '_wp_attachment_image_alt', true );
-								//title and link
-								$catTitle1		= get_sub_field( 'category_title_1' );
-								$catLink1		= get_sub_field( 'category_link_1' );
-								
-								// Secondary Category 2
-								//image
-								$catImg2 		= get_sub_field( 'category_image_2' );
-								$image_srcset2 	= wp_get_attachment_image_srcset( $catImg2, 'large' );
-								$image_url2		= wp_get_attachment_image_url( $catImg2, 'medium' );
-								$alt2			= get_post_meta( $catImg2, '_wp_attachment_image_alt', true );
-								//title and link
-								$catTitle2		= get_sub_field( 'category_title_2' );
-								$catLink2		= get_sub_field( 'category_link_2' );
-							endwhile;endif;
-						?>
 						<img
 							src="<?php echo esc_attr($image_url1); ?>"
 							srcset="<?php echo esc_attr($image_srcset1); ?>"
@@ -89,8 +91,11 @@
 							alt="<?php echo $alt1 ?>"
 						>
 					</div>
-				</div><!-- .secondary-category-block 1 -->
-				<div class="secondary-category-block block-2">
+					<div class="secondary-title">
+						<h3><?php echo $cat_title1 ?></h3>
+					</div>
+				</a><!-- .secondary-category-block 1 -->
+				<a href="<?php echo esc_attr($cat_link2); ?>" class="secondary-category-block block-2">
 					<div class="secondary-image-frame">
 						<img
 							src="<?php echo esc_attr($image_url2); ?>"
@@ -99,7 +104,10 @@
 							alt="<?php echo $alt2 ?>"
 						>
 					</div>
-				</div><!-- .secondary-category-block 2 -->
+					<div class="secondary-title">
+						<h3><?php echo $cat_title2 ?></h3>
+					</div>	
+				</a><!-- .secondary-category-block 2 -->
 			</div><!-- .secondary-flex-box -->
 		</div><!-- #secondary-block -->
 	</div><!-- .row -->
