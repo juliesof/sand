@@ -36,13 +36,13 @@
 				<div class="category-grid">
 					<article class="fp-category-item fp-grid-sizer"></article>
 					<article id="<?php echo $category_list[0]['name'] ?>" class="fp-category-item fp-category-tall">
-						<div class="fp-category-name">
-							<h3>
-								<?php echo $category_list[0]['name'] ?>
-							</h3>
-						</div>
 						<div class="category-image">
 							<div class="category-image-wrapper">
+								<div class="fp-category-name">
+									<h3>
+										<?php echo $category_list[0]['name'] ?>
+									</h3>
+								</div>
 								<?php
 									// get srcset and image attributes
 									$id		= $category_list[0]['image'];
@@ -60,13 +60,13 @@
 						</div>
 					</article>
 					<article id="<?php echo $category_list[1]['name'] ?>" class="fp-category-item fp-category-wide">
-						<div class="fp-category-name">
-							<h3>
-								<?php echo $category_list[1]['name'] ?>
-							</h3>
-						</div>
 						<div class="category-image">
 							<div class="category-image-wrapper">
+								<div class="fp-category-name">
+									<h3>
+										<?php echo $category_list[1]['name'] ?>
+									</h3>
+								</div>
 								<?php
 									// get srcset and image attributes
 									$id		= $category_list[1]['image'];
@@ -84,13 +84,13 @@
 						</div>
 					</article>
 					<article id="<?php echo $category_list[2]['name'] ?>" class="fp-category-item fp-category-square">
-						<div class="fp-category-name">
-							<h3>
-								<?php echo $category_list[2]['name'] ?>
-							</h3>
-						</div>
 						<div class="category-image">
 							<div class="category-image-wrapper">
+								<div class="fp-category-name">
+									<h3>
+										<?php echo $category_list[2]['name'] ?>
+									</h3>
+								</div>
 								<?php
 									// get srcset and image attributes
 						 			$id			= $category_list[2]['image'];
@@ -108,13 +108,13 @@
 						</div>
 					</article>
 					<article id="<?php echo $category_list[3]['name'] ?>" class="fp-category-item fp-category-square">
-						<div class="fp-category-name">
-							<h3>
-								<?php echo $category_list[3]['name'] ?>	
-							</h3>
-						</div>
 						<div class="category-image">
 							<div class="category-image-wrapper">
+								<div class="fp-category-name">
+									<h3>
+										<?php echo $category_list[3]['name'] ?>	
+									</h3>
+								</div>
 								<?php
 									// get srcset and image attributes
 									$id			= $category_list[3]['image'];

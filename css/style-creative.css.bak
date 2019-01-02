@@ -12,8 +12,6 @@
 * Frontpage About
 * Frontpage Featured and Secondary Categories
 * Store Tour Page
-* Archive Items Page
-* Single Items Page
 
 	Extra Small Devices
 * Frontpage Hero
@@ -47,10 +45,6 @@
 /* don't need side margin with centered columns */
 .title-logo-block .navbar-brand {
 	margin-right: 0;
-}
-/* some shadow to accent header */
-#wrapper-navbar {
-	box-shadow: 0 -5px 21px 0px rgba(70, 70, 70, 0.86);
 }
 /*----- Site Ankler / Site Footer */
 /*-- Ankler */
@@ -338,13 +332,8 @@ div#wrapper-footer {
 }
 
 /*----- Store Tour Page*/
-#store-tour-page {
-	padding-top: 2rem;
-}
 .tour-tile,
-.tour-tile-sizer,
-.item-tile,
-.item-tile-sizer {
+.tour-tile-sizer {
 	width: 100%;
 	padding: 10px;
 }
@@ -354,9 +343,18 @@ div#wrapper-footer {
 }
 .tile-image-wrapper {
 	height: 0;
-	padding-top: 100%;
+	padding-top: 75%;
 	position: relative;	
 	overflow: hidden;
+}
+.tile-image-wrapper::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(50,50,50,.3);
 }
 .tile-image-wrapper img {
 	position: absolute;
@@ -367,8 +365,7 @@ div#wrapper-footer {
 	max-width: unset;
 	transform: translate(-50%, -50%);
 }
-.tour-title,
-.item-title {
+.tour-title {
 	color: #fff;
 	position: absolute;
 	top: 50%;
@@ -389,14 +386,14 @@ div#wrapper-footer {
 	transition: all .3s ease-in-out;
 	-webkit-transition: all .3s ease-in-out;
 }
-.tour-tile .tile-content-wrapper:hover .hover-overlay {
+.tile-content-wrapper:hover .hover-overlay {
 	opacity: 1;
 }
 .cross-box {
 	position: absolute;
-	top: 32%;
-	left: 37%;
-	transform: translate(-25%,-25%) scale(.25);
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%) scale(.5);
 }
 .cross-background {
 	background: #333;
@@ -472,118 +469,12 @@ div#wrapper-footer {
 	height: 5px;
 	background-color: #3f928c;
 }
-/*----- Items Archive Page */
-#item-archive-page {
-	padding-top: 2rem;
-	padding-bottom: 2rem;
-}
-.item-tile,
-.item-tile-sizer {
-	width: 50%;
-}
-.item-tile .item-image-0 {
-	opacity: 1;
-	transition: opacity .3s ease;
-}
-.item-tile .item-image-1 {
-	opacity: 0;
-	transition: opacity .3s ease-out;
-}
-.item-tile:hover .item-image-0 {
-	opacity: 0;
-}
-.item-tile:hover .item-image-1 {
-	opacity: 1;
-}
-
-/*----- Single Items Page */
-.single-gallery-grid {
-	display: flex;
-	justify-content: center;
-}
-.thumbnail-menu {
-	display: flex;
-	flex-direction: column;
-	order: 2;
-}
-.thumbnail-menu img {
-	cursor: pointer;
-	width: 75px;
-	padding-bottom: 15px;
-	transition: transform .2s ease;
-}
-.thumbnail-menu img:hover {
-	transform: scale(1.05);
-}
-.variant-images-wrapper {
-	position: relative;
-	order: 1;
-	max-width: 100%;
-}
-.single-image-wrapper {
-	position: absolute;
-	top: 0;
-	left: 0;
-	display: none;
-	/*transition: opacity .3s ease;*/
-}
-.single-image-wrapper:first-child {
-	display: block;
-}
-.single-image-wrapper div:last-child img {
-	max-width: unset;
-}
-.item-image-sizer {
-	height: 500px;
-	width: 500px;
-	overflow: hidden;
-}
-.item-image-sizer img {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%,-50%);
-	width: 100%;
-}
-/*.single-image-wrapper.current {
-	opacity: 1;
-	transition: opacity .3s ease-in-out;
-}*/
-/*single text content*/
-.item-header {
-	padding: 15px 0;
-}
-.item-sidebar-wrapper {
-	max-width: 600px;
-}
 
 @media(min-width: 567px) {
 	/*----- Store Tour Page*/
 	.tour-tile,
 	.tour-tile-sizer {
 		width:  50%;
-	}
-	/*----- Item Archive Page */
-	.item-tile,
-	.item-tile-sizer {
-		width:  33.333%;
-	}
-	/*----- Items Single Page */
-	.thumbnail-menu {
-		flex-direction: column;
-		order: 1;
-		width: 100px;
-		height: 420px;
-		justify-content: flex-start;
-	}
-	.variant-images-wrapper {
-		order: 2;
-		width: 500px;
-		height: 500px;
-	}
-	.single-image-wrapper {
-		width: 100%;
-		height: 100%;
 	}
 }
 @media(min-width: 768px) {
@@ -648,19 +539,11 @@ div#wrapper-footer {
 		padding: 60px;
 		padding-left: 30px;
 	}
-	/*----- Single Items Page */
-	.single-gallery-grid {
-		justify-content: flex-end;
-	}
 }
 @media(min-width: 1200px) {
 	/*----- Store Tour Page*/
 	.tour-tile,
 	.tour-tile-sizer {
 		width: 33.333%;
-	}
-	.item-tile,
-	.item-tile-sizer {
-		width: 25%;
 	}
 }

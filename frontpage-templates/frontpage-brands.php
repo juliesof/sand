@@ -9,7 +9,7 @@
 
 ?>
  
-<section id="logo-slider" class="container-fluid">
+<section id="logo-slider" class="container">
 	<div class="row">
 		<div id="brand-carousel" class="owl-carousel logo-slider">
 			<?php 

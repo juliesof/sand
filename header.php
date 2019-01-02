@@ -34,7 +34,15 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 	<!-- ******************* The Navbar Area ******************* -->
 	<div class="superscript-header-infobar">
-		social media buttons
+		<div class="container super-header-content">
+			<span class="left-promo">
+				<a href=""><i class="fab fa-facebook-f"></i></a>
+				<span>Follow Us!</span>
+			</span>
+			<span class="right-promo"> 
+				<a href="#"><span>Contact Us!</span></a>
+			</span>
+		</div>
 	</div>
 
 	<div id="wrapper-navbar" itemscope itemtype="http://schema.org/WebSite">
@@ -43,9 +51,9 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 		<nav class="navbar navbar-expand-md navbar-light header-color">
 		<?php if ( 'container' == $container ) : ?>
-			<div class="container" >
+			<div class="container flex-column" >
 		<?php endif; ?>
-				<div>
+				<div class="title-logo-block">
 					<!-- Your site title as branding in the menu -->
 					<?php if ( ! has_custom_logo() ) { ?>
 

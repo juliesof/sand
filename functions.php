@@ -40,9 +40,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 $child_includes = array(
-  '/cb-custom-image-sizes.php',   // Load image srcset
-  '/enqueue.php',                 // Child enqueue
-  '/custom-fields.php'            // ACF
+  '/cb-custom-image-sizes.php',       // Load image srcset
+  '/enqueue.php',                     // Child enqueue
+  '/custom-fields.php'                // ACF post types
 );
 
 foreach ( $child_includes as $file ) {
@@ -52,4 +52,11 @@ foreach ( $child_includes as $file ) {
   }
   require_once $filepath;
 }
+
+// Add ACF options page
+if( function_exists('acf_add_options_page') ) {
+  acf_add_options_page();
+  acf_add_options_sub_page('Footer');
+}
+
 ?>

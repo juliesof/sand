@@ -12,7 +12,23 @@ var $body = $('body');
 	
 	// check if on the homepage
 	if( $body.hasClass('home') ){
-		
+		// // size hero section to fill viewport
+		// var $hero = $('#hero');
+		// function heroHeight(){
+		// 	if( $(window).width() > 992 && $(window).height() < $(window).width()){
+		// 		var	$navbar = $('#wrapper-navbar');
+		// 			$supbar = $('.superscript-header-infobar');
+		// 			$height = $(window).height() - $navbar.height() - $supbar.outerHeight();
+		// 		$hero.css({'height':$height});
+		// 	}else {
+		// 		$hero.css({'height':'50vh'});
+		// 	}
+		// }
+		// //run on page load
+		// heroHeight();
+		// //run on page resize
+		// $(window).resize(heroHeight);
+
 		//----- About Section
 		var $fpAbout 	= $('#fp-about');
 			$fpAboutImg = $('.parallax-image > img');
@@ -96,7 +112,7 @@ var $body = $('body');
 		});
 	}
 
-	//Store Tour Page
+	//check if currently on the store tour page
 	if( $body.hasClass('page-template-page-store-tour') ) {
 		// Store Tour isotope gallery tiles
 		var $tourGallery = $('#store-tour-gallery').isotope({
@@ -111,69 +127,6 @@ var $body = $('body');
 		$('a.tour-tile').featherlight({
 			targetAttr: 'href'
 		});
-		$('a.tour-tile').featherlightGallery();
-	}
-
-	//Items Archive Page
-	if( $body.hasClass('post-type-archive-items') ) {
-		// Store Tour isotope gallery tiles
-		var $itemsGallery = $('#item-archive-gallery').isotope({
-			itemSelector: '.item-tile',
-			percentPosition: true,
-			stagger: 10,
-			masonry: {
-				columnWidth: '.item-tile-sizer',
-			},
-		});
-	}
-
-	//Items Single Page
-	if( $body.hasClass('single-items') ) {
-		
-		var $galleryContainer 	= $('.single-gallery-grid');
-			$varImages 			= $('.single-image-wrapper');
-			$imageMenu 			= $('.thumbnail-menu');
-		
-		//Create function for determining which zoom plugin to use based on screen size
-		$.fn.chooseZoomPlugin = function() {
-			// return this.css('justify-content') == 'center';
-			//returns true if grid items are centered align, gallery is single column layout
-			// check for screen size and initiate appropriate zoom plugin
-			$currentImage = $( '.single-image-wrapper' );
-			if ( this.css('justify-content') == 'center' ) {
-				$currentSource = $currentImage.find('img').attr('src');
-				$currentImage.zoom({
-					on: 'toggle',
-				});
-			}else {
-				$currentImage.jzoom({
-					suffixName: '-1024x1024',
-				});
-			}
-		}
-
-		// Check and intialize immediately upon page load
-		$galleryContainer.chooseZoomPlugin();	
-		
-		// Recheck and reinitialize on window resize
-		$( window ).resize( function() {
-			$galleryContainer.chooseZoomPlugin();
-		} );
-
-		// 
-		$imageMenu.on('click', 'img',function(){
-			$imgSelector = $(this).data('variant');
-			$varImages.fadeOut();
-			$whichClass = '.' + $imgSelector;
-			$varImages.removeClass('current');
-			$varImages.filter($whichClass).fadeIn().addClass('current');
-			// Also reinitalize zooms now that the photo changed
-			$galleryContainer.chooseZoomPlugin();
-		});
-		// $imgSource = $currentImage.find('img').attr('src');
-		// $varImages.zoom({
-		// 	url: $imgSource
-		// });
 	}
 
 }); //end document.ready()
