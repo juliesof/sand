@@ -40,8 +40,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 $child_includes = array(
-  '/cb-custom-image-sizes.php',        // Load image srcset
-  '/enqueue.php'                      // Child enqueue
+  '/cb-custom-image-sizes.php',   // Load image srcset
+  '/enqueue.php',                 // Child enqueue
+  '/custom-fields.php'            // ACF
 );
 
 foreach ( $child_includes as $file ) {
