@@ -35,7 +35,7 @@ function cb_theme_scripts() {
 	// JZoom
 	wp_enqueue_script( 'zoom-js', get_stylesheet_directory_uri() . '/lib/JZoom/jzoom.min.js', array('jquery'), '1.1.6' );
 	// Jack Zoom
-	wp_enqueue_script( 'zoom-js', get_stylesheet_directory_uri() . '/lib/Zoom/jquery.zoom.min.js', array('jquery'), '1.7.21' );
+	wp_enqueue_script( 'jack-zoom', get_stylesheet_directory_uri() . '/lib/Zoom/jquery.zoom.min.js', array('jquery'), '1.7.21' );
 
 	// custom javascript
 	wp_enqueue_script( 'creative-js', get_stylesheet_directory_uri() . '/js/creative.js', array( 'jquery' ), true );

@@ -139,10 +139,14 @@ var $body = $('body');
 			// return this.css('justify-content') == 'center';
 			//returns true if grid items are centered align, gallery is single column layout
 			// check for screen size and initiate appropriate zoom plugin
-			$currentImage = $( '.single-image-wrapper' );
+			$currentImage = $( '.single-image-wrapper.current' );
 			if ( this.css('justify-content') == 'center' ) {
 				$currentSource = $currentImage.find('img').attr('src');
+				$brokenSource = $currentSource.split('.jpg');
+				$bigImage = $brokenSource[0] + '-991x991.jpg';
+				console.log($bigImage);
 				$currentImage.zoom({
+					url: $bigImage,
 					on: 'toggle',
 				});
 			}else {

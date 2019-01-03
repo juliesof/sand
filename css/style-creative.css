@@ -555,6 +555,7 @@ div#wrapper-footer {
 }
 .item-sidebar-wrapper {
 	max-width: 600px;
+	margin: 0 auto;
 }
 
 @media(min-width: 567px) {
