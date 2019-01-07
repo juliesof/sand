@@ -9,11 +9,77 @@
 get_header();
 ?>
 <div id="items-archive-page" class="container-fluid">
-	<div class="row">
-		<div id="item-archive-menu-column" class="col-md-3 col-xl-2">
-			<h2 class="gallery-menu-title text-center">Categories</h2>
+	<div class="row wrapper items-archive-wrapper">
+		<div id="items-archive-menu-column" class="col-md-3 col-xl-2">
+			<h2 class="gallery-menu-title">Categories</h2>
 			<div class="menu-filters">
 				<ul>
+					<li>
+						<a href="#apparrel">
+							Apparrel
+						</a>
+						<ul>
+							<li>
+								<a href="#womens-apparrel">
+									Women
+								</a>	
+							</li>
+							<li>
+								<a href="#mens-apparrel">
+									Men
+								</a>	
+							</li>
+							<li>
+								<a href="#childrens-apparrel">
+									Children
+								</a>	
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="#jewelry">
+							Jewelry
+						</a>
+						<ul>
+							<li>
+								<a href="#silver-jewelry">
+									Silver
+								</a>	
+							</li>
+							<li>
+								<a href="#gems-jewelry">
+									Gems
+								</a>	
+							</li>
+							<li>
+								<a href="#nautical-jewelry">
+									Nautical
+								</a>	
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="#home-decor">
+							Home Decor
+						</a>
+						<ul>
+							<li>
+								<a href="#wall-hangings-home-decor">
+									Wall Hangings
+								</a>	
+							</li>
+							<li>
+								<a href="#furniture-home-decor">
+									Furniture
+								</a>	
+							</li>
+							<li>
+								<a href="#kitchen-home-decor">
+									Kitchen
+								</a>	
+							</li>
+						</ul>
+					</li>
 					<?php
 					// if(have_rows( 'store_tour' )):
 					// while(have_rows( 'store_tour' )):the_row();
@@ -25,8 +91,8 @@ get_header();
 				</ul>
 			</div>
 		</div>
-		<div id="item-archive-gallery-column" class="col-md-9 col-xl-10">
-			<section id="item-archive-gallery">
+		<div id="items-archive-gallery-column" class="col-md-9 col-xl-10">
+			<section id="items-archive-gallery">
 				<div class="item-tile-sizer"></div>
 				<?php
 					while ( have_posts() ) : the_post(); 
@@ -51,19 +117,21 @@ get_header();
 								$img_alt1 = get_post_meta( $image1, '_wp_attachment_image_alt', true);
 								?>
 								<img 
-									class = "item-image-0"
+									class = "archive-variants item-image-0"
 									src= "<?php echo esc_attr( $image_url0 ); ?>" 
 									srcset = "<?php echo esc_attr( $image_srcset0 ); ?>"
 									sizes = "(min-width: 1200px) 21vw, (min-width: 768px) 25vw, 100vw"
 									alt = "<?php echo $image_alt0; ?>"
 								>
+								<?php if ($image1): ?>
 								<img 
-									class="item-image-1"
+									class="archive-variants item-image-1"
 									src= "<?php echo esc_attr( $image_url1 ); ?>" 
 									srcset = "<?php echo esc_attr( $image_srcset1 ); ?>"
 									sizes = "(min-width: 1200px) 21vw, (min-width: 768px) 25vw, 100vw"
 									alt = "<?php echo $image_alt1; ?>"
 								>
+								<?php endif; ?>
 							</div>
 							<h4 class="tour-title">
 								<?php echo $tour_title ?>

@@ -22,19 +22,18 @@ get_header();
 		<div class="row">
 
 			<div
-				class="col-lg-7"
+				class="col-lg-8 col-xl-7"
 				id="single-item-images">
 
-				<main class="site-main wrapper" id="main" role="main">
+				<main class="content-main wrapper" id="main" role="main">
 					<div class="single-gallery-grid">
 					<?php 
 						
 						$images = get_field( 'item_images' );
 						if($images): ?>
-
-						<div class="thumbnail-menu">
-							
-						<?php 
+						<!-- comments are for removing white space -->
+						<div class="thumbnail-menu"><!-- 
+						 --><?php 
 							$num = 0;
 							foreach ($images as $image):
 								$variant_image = $image['image'];
@@ -42,16 +41,16 @@ get_header();
 								$image_url = wp_get_attachment_image_url( $variant_image, "thumbnail" );
 								$image_alt = get_post_meta( $variant_image, '_wp_attachment_image_alt', true); 
 
-								?>
-								<img 
+								?><!-- 
+								 --><img 
 									src="<?php echo esc_attr($image_url) ?>"
 									data-variant="variant<?php echo $num; ?>"
-									>
-							<?php 
+									><!-- 
+							 --><?php 
 								$num++;
 							endforeach; 
-						?>
-						</div><!-- .thumbnail-menu -->
+						?><!-- 
+						 --></div><!-- .thumbnail-menu -->
 
 						<div class="variant-images-wrapper">
 						<?php
@@ -68,7 +67,7 @@ get_header();
 										class="image-variant"
 										src= "<?php echo esc_attr( $image_url ); ?>" 
 										srcset = "<?php echo esc_attr( $image_srcset ); ?>"
-										sizes = "(min-width: 600px) 500px, 100vw"
+										sizes = "(min-width: 768px) 500px, 100vw"
 										alt = "<?php echo $image_alt; ?>"
 									>
 								</div>
@@ -90,9 +89,9 @@ get_header();
 			
 			<div 
 				id="single-item-sidebar" 
-				class="col-lg-5">
+				class="col-lg-4 col-xl-5">
 				
-				<section class="item-sidebar-wrapper wrapper">
+				<section class="item-sidebar-wrapper">
 				
 				<div class="item-header">
 					<h2 class="cb-page-header">

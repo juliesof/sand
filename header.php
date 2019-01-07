@@ -51,7 +51,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 		<nav class="navbar navbar-expand-md navbar-light header-color">
 		<?php if ( 'container' == $container ) : ?>
-			<div class="container flex-column" >
+			<div class="container nav-container" >
 		<?php endif; ?>
 				<div class="title-logo-block">
 					<!-- Your site title as branding in the menu -->

@@ -94,7 +94,7 @@ var $body = $('body');
 			touchDrag: true,
 			center: true,
 		});
-	}
+	} // End Home Functions
 
 	//Store Tour Page
 	if( $body.hasClass('page-template-page-store-tour') ) {
@@ -117,7 +117,7 @@ var $body = $('body');
 	//Items Archive Page
 	if( $body.hasClass('post-type-archive-items') ) {
 		// Store Tour isotope gallery tiles
-		var $itemsGallery = $('#item-archive-gallery').isotope({
+		var $itemsGallery = $('#items-archive-gallery').isotope({
 			itemSelector: '.item-tile',
 			percentPosition: true,
 			stagger: 10,
@@ -125,6 +125,14 @@ var $body = $('body');
 				columnWidth: '.item-tile-sizer',
 			},
 		});
+		// Add "active-menu" class to select objects when the category menu title is clicked
+		var $itemsMenuTitle = $('.gallery-menu-title');
+			$itemsMenuColumn = $('#items-archive-menu-column');
+			$itemsContent = $('#items-archive-page');
+		$itemsMenuTitle.click(function() {
+			$itemsMenuColumn.toggleClass('active-menu');
+			$itemsContent.toggleClass('active-menu');
+		})
 	}
 
 	//Items Single Page
@@ -144,7 +152,6 @@ var $body = $('body');
 				$currentSource = $currentImage.find('img').attr('src');
 				$brokenSource = $currentSource.split('.jpg');
 				$bigImage = $brokenSource[0] + '-991x991.jpg';
-				console.log($bigImage);
 				$currentImage.zoom({
 					url: $bigImage,
 					on: 'toggle',
@@ -156,11 +163,18 @@ var $body = $('body');
 			}
 		}
 
+
 		// Check and intialize immediately upon page load
 		$galleryContainer.chooseZoomPlugin();	
 		
+		// Clean HTML when window resizes to prevent duplicates
+		// $.fn.cleanObject = function(className) {
+		// 	this.children().not(className).remove();
+		// }
+
 		// Recheck and reinitialize on window resize
 		$( window ).resize( function() {
+			// $currentImage.cleanObject( '.item-image-sizer' );
 			$galleryContainer.chooseZoomPlugin();
 		} );
 
