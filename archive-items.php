@@ -8,29 +8,34 @@
 
 get_header();
 ?>
-<div id="items-archive-page" class="container-fluid">
+<div id="items-archive-page" class="container-fluid no-height">
 	<div class="row wrapper items-archive-wrapper">
 		<div id="items-archive-menu-column" class="col-md-3 col-xl-2">
 			<h2 class="gallery-menu-title">Categories</h2>
+			<div class="gallery-menu-toggle d-block d-md-none">
+				<span class="hamburger-patty patty-1"></span>
+				<span class="hamburger-patty patty-2"></span>
+				<span class="hamburger-patty patty-3"></span>
+			</div>
 			<div class="menu-filters">
 				<ul>
 					<li>
-						<a href="#apparrel">
-							Apparrel
+						<a href="#apparel">
+							apparel
 						</a>
 						<ul>
 							<li>
-								<a href="#womens-apparrel">
+								<a href="#womens-apparel">
 									Women
 								</a>	
 							</li>
 							<li>
-								<a href="#mens-apparrel">
+								<a href="#mens-apparel">
 									Men
 								</a>	
 							</li>
 							<li>
-								<a href="#childrens-apparrel">
+								<a href="#childrens-apparel">
 									Children
 								</a>	
 							</li>

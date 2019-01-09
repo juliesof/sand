@@ -112,12 +112,31 @@ var $body = $('body');
 			targetAttr: 'href'
 		});
 		$('a.tour-tile').featherlightGallery();
+
+		// Add "floating-menu" class to select objects when the category menu toggle is clicked
+		var $tourMenuToggle = $( '.gallery-menu-toggle' );
+			$tourMenuColumn = $( '#st-menu-column' );
+			$tourContent = $( '#store-tour-page' );
+	
+		$tourMenuToggle.click(function() {
+			$tourMenuColumn.toggleClass( 'floating-menu' );
+			$tourContent.toggleClass( 'floating-menu' );
+			if ($tourContent.hasClass( 'no-height' )) {
+				$tourContent.removeClass( 'no-height' );
+			}
+			else {
+				//queue the removal of height to wait until transition finishes
+				$tourContent.delay( 300 ).queue( function(){
+					$tourContent.addClass( 'no-height' ).dequeue();
+				});
+			}
+		});
 	}
 
 	//Items Archive Page
-	if( $body.hasClass('post-type-archive-items') ) {
+	if( $body.hasClass( 'post-type-archive-items' ) ) {
 		// Store Tour isotope gallery tiles
-		var $itemsGallery = $('#items-archive-gallery').isotope({
+		var $itemsGallery = $( '#items-archive-gallery' ).isotope({
 			itemSelector: '.item-tile',
 			percentPosition: true,
 			stagger: 10,
@@ -125,22 +144,32 @@ var $body = $('body');
 				columnWidth: '.item-tile-sizer',
 			},
 		});
-		// Add "active-menu" class to select objects when the category menu title is clicked
-		var $itemsMenuTitle = $('.gallery-menu-title');
-			$itemsMenuColumn = $('#items-archive-menu-column');
-			$itemsContent = $('#items-archive-page');
-		$itemsMenuTitle.click(function() {
-			$itemsMenuColumn.toggleClass('active-menu');
-			$itemsContent.toggleClass('active-menu');
-		})
+		// Add "floating-menu" class to select objects when the category menu title is clicked
+		var $itemsMenuToggle = $( '.gallery-menu-toggle' );
+			$itemsMenuColumn = $( '#items-archive-menu-column' );
+			$itemsContent = $( '#items-archive-page' );
+	
+		$itemsMenuToggle.click(function() {
+			$itemsMenuColumn.toggleClass( 'floating-menu' );
+			$itemsContent.toggleClass( 'floating-menu' );
+			if ($itemsContent.hasClass( 'no-height' )) {
+				$itemsContent.removeClass( 'no-height' );
+			}
+			else {
+				//queue the removal of height to wait until transition finishes
+				$itemsContent.delay( 300 ).queue( function(){
+					$itemsContent.addClass( 'no-height' ).dequeue();
+				});
+			}
+		});
 	}
 
 	//Items Single Page
 	if( $body.hasClass('single-items') ) {
 		
-		var $galleryContainer 	= $('.single-gallery-grid');
-			$varImages 			= $('.single-image-wrapper');
-			$imageMenu 			= $('.thumbnail-menu');
+		var $galleryContainer 	= $( '.single-gallery-grid' );
+			$varImages 			= $( '.single-image-wrapper' );
+			$imageMenu 			= $( '.thumbnail-menu' );
 		
 		//Create function for determining which zoom plugin to use based on screen size
 		$.fn.chooseZoomPlugin = function() {
@@ -149,8 +178,8 @@ var $body = $('body');
 			// check for screen size and initiate appropriate zoom plugin
 			$currentImage = $( '.single-image-wrapper.current' );
 			if ( this.css('justify-content') == 'center' ) {
-				$currentSource = $currentImage.find('img').attr('src');
-				$brokenSource = $currentSource.split('.jpg');
+				$currentSource = $currentImage.find( 'img' ).attr( 'src' );
+				$brokenSource = $currentSource.split( '.jpg' );
 				$bigImage = $brokenSource[0] + '-991x991.jpg';
 				$currentImage.zoom({
 					url: $bigImage,

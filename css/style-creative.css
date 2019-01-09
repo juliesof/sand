@@ -1,6 +1,6 @@
 /* Table of Content
 
-	Base
+* Base
 * Utilities
 * Keyframes
 * Site Title/Navbar
@@ -30,6 +30,10 @@
 * Large Frontpage Testimonials
 */
 
+/*----- Base */
+a {
+	color: #d64669;
+}
 /*----- Header */
 /*-- super header */
 .superscript-header-infobar {
@@ -343,6 +347,7 @@ div#wrapper-footer {
 /*----- Store Tour Page*/
 #store-tour-page {
 	padding-top: 2rem;
+	padding-bottom: 2rem;
 }
 .tour-tile,
 .tour-tile-sizer,
@@ -481,7 +486,8 @@ div#wrapper-footer {
 	padding-bottom: 2rem;
 }
 /* constrain floating category menu to content area */
-.items-archive-wrapper {
+.items-archive-wrapper,
+#st-content-wrapper {
 	position: relative;
 }
 /* add padding to menu title to match gallery items */
@@ -591,29 +597,44 @@ div#wrapper-footer {
 	}
 }
 @media(max-width: 767px) {
-	/*----- Items Archive Page */
-	#items-archive-page {
+	/*----- Floating Menu for Items Archive Page and Store Tour Page */
+	#items-archive-page,
+	#store-tour-page {
 		position: relative;
 	}
-	/* default */
-	#items-archive-page::after {
+	/* padding for store tour photos when menu is floating */
+	#st-content-wrapper {
+		padding-top: 2rem;
+	}
+	/* shrink overlay when not in use to avoid blocking clicked items */
+	#items-archive-page.no-height::after,
+	#store-tour-page.no-height::after {
+		height: 0;
+	}
+	/* default overlay styling (future mixin?) */
+	#items-archive-page::after,
+	#store-tour-page::after {
 		content: '';
 		position: absolute;
 		top: 0;
 		right: 0;
 		left: 0;
-		bottom: 0;
-		background-color: rgba(87, 116, 109, 0.5);
+		height: 100%;
+		background-color: rgba(20, 34, 31, 0.55);
 		opacity: 0;
 		transition: opacity .3s ease-in-out;
+		-webkit-transition: opacity .3s ease-in-out;
 	}
-	/* cover content with translucent layer when menu is active */
-	#items-archive-page.active-menu::after {
+	/* cover content with translucent layer when menu is floating */
+	#items-archive-page.floating-menu::after,
+	#store-tour-page.floating-menu::after {
 		opacity: 1;
 	}
 	/* Floating Category Menu */
-	/* default */
-	#items-archive-menu-column {
+	#items-archive-menu-column,
+	#st-menu-column {
+		margin-top: -10px;
+		margin-bottom: -10px;
 		background-color: #fff;
 		position: absolute;
 		top: 0;
@@ -625,33 +646,68 @@ div#wrapper-footer {
 		transition: transform .3s ease-in-out;
 		-webkit-transition: transform .3s ease-in-out;
 	}
-	.active-menu #items-archive-menu-column {
+	/* show menu when floating menu class is activated */
+	.floating-menu #items-archive-menu-column,
+	.floating-menu #st-menu-column {
 		transform: translateX(0px);
 		-webkit-transform: translateX(0px);
 	}
+	/* in case category items list is longer than content */
 	.menu-filters {
-		padding-top: 30px;
+		/*padding-top: 30px;
 		padding-bottom: 30px;
 		position: absolute;
 		top: 0;
 		right: 0;
 		bottom: 0;
-		left: 0;
+		left: 0;*/
 		overflow: scroll;
 	}
-	/* rotate and reposition header when menu is in show/hide mode */
+	/* resize menu title */
 	.gallery-menu-title {
-		display: inline-block;
-		transform: rotate(90deg) translate(113px, -78px);
-		transform-origin: bottom right;
+		font-size: 26px;
+	}
+	/* reposition hamburger to always be visible */
+	.gallery-menu-toggle {
+		cursor: pointer;
+		position: absolute;
+		top: -5px;
+		right: -60px;
+		padding: 10px;
+	}
+	/* general burger patty defaults */
+	.gallery-menu-toggle span {
+		display: block;
+		background-color: #333;
+		height: 2px;
+		width: 28px;
+		margin-bottom: 6px;
+		position: relative; 
+		border-radius: 2px;
+		transform-origin: 4px 0;
+		transition: background-color .3s ease-in-out, transform .3s ease-in-out, opacity .3s ease-in-out;
+		-webkit-transition: background-color .3s ease-in-out, transform .3s ease-in-out, opacity .3s ease-in-out;
+	}
+	/* individual hamburger patty defaults */
+	.gallery-menu-toggle .patty-1 {
+		transform-origin: 0% 0%;
+	}
+	.gallery-menu-toggle .patty-3 {
+		margin-bottom: 0;
+		transform-origin: 0% 100%;
+	}
+	.floating-menu .hamburger-patty {
 		background-color: #fff;
-		text-align: left;
-		font-size: 20px;
-		padding-left: 30px;
-		padding-right: 30px;
-		padding-bottom: 10px;
-		border-top-left-radius: 10px;
-		border-top-right-radius: 10px;
+	}
+	.floating-menu .patty-1 {
+		transform: rotate(45deg) translate(-3px, -1px);
+	}
+	.floating-menu .patty-2 {
+		opacity: 0;
+		transform: scale(0.2, 0.2);
+	}
+	.floating-menu .patty-3 {
+		transform: rotate(-45deg) translate(-1px, -1px);
 	}
 }
 @media(min-width: 768px) {
