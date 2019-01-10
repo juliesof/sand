@@ -10,14 +10,14 @@ function create_custom_post_types(){
 	register_post_type('items',
 		array(
 		'labels' => array(
-			'name' => __('Items'),
-			'singular_name' => __('Item'),
+			'name' => __('Store Products'),
+			'singular_name' => __('Product'),
 			),
 		'public' => true,
 		'has_archive' => true,
 		'show_in_nav_menus' => true,
 		'rewrite' => array (
-			'slug' => 'items'
+			'slug' => 'store-products'
 			),
 		)
 	);
