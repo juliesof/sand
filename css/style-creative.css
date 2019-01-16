@@ -9,7 +9,7 @@
 * Constant Telephone Icon
 * Frontpage Hero
 * Frontpage Primary Categories
-* Frontpage About
+* Frontpage Parallax
 * Frontpage Featured and Secondary Categories
 * Store Tour Page
 * Items Archive Page
@@ -91,14 +91,14 @@ a {
 }
 .footer-image-wrapper {
 	height: 0;
+	overflow: hidden;	
 	padding-top: 62.5%;
 	position: relative;
-	overflow: hidden;	
 }
 .footer-image-wrapper img {
+	left: 50%;
 	position: absolute;
 	top: 50%;
-	left: 50%;
 	transform: translate(-50%,-50%);
 }
 .footer-fb-wrapper {
@@ -107,9 +107,9 @@ a {
 	position: relative;
 }
 .footer-fb-wrapper img {
+	left: 50%;
 	position: absolute;
 	top: 0;
-	left: 50%;
 	transform: translate(-50%);
 }
 /*-- Footer */
@@ -119,14 +119,34 @@ div#wrapper-footer {
 }
 /*----- Owl Carousel Hero */
 #hero {
-	height: 50vh;/* temporary height until  */
-	position: relative;
+	height: 50vh;
+}
+#hero-carousel {
+	display: flex;
+}
+#hero .owl-carousel,
+#hero .owl-stage-outer,
+#hero .owl-stage,
+#hero .owl-item {
+	height: 100%;
+	width: 100%;
+}
+#hero .owl-item {
 	overflow: hidden;
 }
 .hero-image-wrapper {
-	display: flex;
-	justify-content: center;
 	align-items: center;
+	display: flex;
+	height: 100%;
+	justify-content: center;
+	width: 100%;
+}
+#hero .hero-image-wrapper img {
+	flex-shrink: 0;
+	max-width: unset;
+	min-width: 100%;
+	min-height: 100%;
+	width: auto;
 }
 .hero-text {
 	display: none;
@@ -170,7 +190,8 @@ div#wrapper-footer {
 }
 /*Frontpage Primary Categories*/
 #primary-categories {
-	padding: 2rem 0;
+	padding-top: 2rem;
+	padding-bottom: 2rem;
 }
 .category-grid-wrapper {
 	/*height: 600px;*/
@@ -250,12 +271,12 @@ div#wrapper-footer {
 /*#fp-about {
 
 }*/
-.about-parallax-container {
+/*.about-parallax-container {
 	position: relative;
 	width: 100%;
 }
 .parallax-image {
-	height: 40vw;
+	height: 75vw;
 	width: 100%;
 	overflow: hidden;
 	position: relative;
@@ -293,18 +314,78 @@ div#wrapper-footer {
 	color: #fff;
 	text-align: center;
 	max-width: 80%;
+}*/
+
+/*----- Frontpage Parallax*/
+/* necessary for parallax JS to work */
+#fp-parallax {
+	background: transparent;
+	height: 65vh;
+	/*position: relative;*/
+	margin-bottom: 2rem;
 }
-/*----- Frontpage Featured and Secondary Categories*/
-#secondary-featured {
-	height: 750px;
-}
-/* Featured Carousel */
-/* center image */
-.featured-slide {
+/* center and fill image inside container */
+/*.parallax-image {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
 	display: flex;
-	justify-content: center;
 	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+}*/
+/*#parallax-image {
+	flex-shrink: 0;
+	min-width: 100%;
+	min-height: 100%;
+	max-width: unset;
+}*/
+
+/* static text will float over the parallax image */
+.static-text {
+	color: #fff;
+	padding: 20px 15px;
+	position: absolute;
 }
+
+/*----- Frontpage Featured and Secondary Categories*/
+/* Make the featured slider and secondary categories the same height */
+#featured-block,
+#secondary-block {
+	height: 75vh;
+	margin-bottom: 2rem;
+}
+/*-- Featured Carousel */
+#featured-carousel,
+#featured-carousel .owl-stage-outer,
+#featured-carousel .owl-stage,
+#featured-carousel .owl-item {
+	height: 100%;
+	width: 100%;
+}
+/* prevent wide images from showing over other slides */
+#featured-carousel .owl-item {
+	overflow: hidden;
+}
+/* flex version of object fit also works in IE - Image Container */
+#featured-carousel .featured-slide {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+/* flex version of object fit also works in IE - Image */
+#featured-carousel .featured-slide img {
+	flex-shrink: 0;
+	max-width: unset;/*unset bootstrap width*/
+	min-width: 100%;
+	min-height: 100%;
+	width: auto;
+}
+/* Descriptive title overlay */
 .featured-slide .overlay-title {
 	position: absolute;
 	width: 100%;
@@ -313,7 +394,7 @@ div#wrapper-footer {
 	text-align: center;
 	color: #fff;
 }
-/* Secondary Categories */
+/*-- Secondary Categories */
 .secondary-box {
 	height: 100%;
 	display: flex;
@@ -736,14 +817,25 @@ div#wrapper-footer {
 		height: 250px;
 	}
 	/*----- Frontpage Featured and Secondary Categories*/
-	/*Feature Carousel*/
-	#featured-block {
-		padding: 30px 15px 30px 30px;
-	}
-	/*Secondary Categories*/
+	#featured-block,
 	#secondary-block {
-		padding: 30px 30px 15px 30px;
+		height: 100vh;
+		max-height: 75vw;
 	}
+	#featured-block {
+		padding-right: 15px;
+	}
+	#secondary-block {
+		padding-left: 15px;
+	}
+	/*Feature Carousel*/
+	/*#featured-block {
+		padding: 30px 15px 30px 30px;
+	}*/
+	/*Secondary Categories*/
+	/*#secondary-block {
+		padding: 30px 30px 15px 30px;
+	}*/
 	/*----- Items Single Page */
 	.single-gallery-grid {
 		flex-direction: row;
@@ -767,6 +859,13 @@ div#wrapper-footer {
 		height: 100%;
 	}
 }
+/* Medium Horizontal screens */
+@media(min-width: 768px) and (orientation: landscape) {
+	/* Frontpage Parallax */
+	.parallax-image {
+		height: 75vh;
+	}
+}
 /* Large Landscape screens */
 @media(min-width: 992px) {	
 	.item-tile .archive-variants:first-child {
@@ -784,18 +883,18 @@ div#wrapper-footer {
 		opacity: 1;
 	}
 	/*----- Frontpage Featured and Secondary Categories*/
-	#secondary-featured {
+	/*#secondary-featured {
 		height: 90vh;
-	}
-	#secondary-featured .content-wrapper {
+	}*/
+	/*#secondary-featured .content-wrapper {
 		height: 100%;
-	}
+	}*/
 	/* Featured Carousel */
 	#featured-block {
-		padding: 60px;
+		/*padding: 60px;*/
 		padding-right: 30px;
 	}
-	#featured-carousel,
+	/*#featured-carousel,
 	#featured-carousel .owl-stage-outer,
 	#featured-carousel .owl-stage,
 	#featured-carousel .owl-item {
@@ -806,10 +905,10 @@ div#wrapper-footer {
 	}
 	#featured-carousel .featured-slide img {
 		max-width: unset;
-	}
+	}*/
 	/* Secondary Categories */
 	#secondary-block {
-		padding: 60px;
+		/*padding: 60px;*/
 		padding-left: 30px;
 	}
 	/*----- Single Items Page */

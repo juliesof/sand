@@ -26,6 +26,9 @@ function cb_theme_scripts() {
 	wp_enqueue_script( 'isotope-js', get_stylesheet_directory_uri() . '/js/isotope.pkgd.min.js', array(), '3.0.6' );
 	wp_enqueue_script( 'images-loaded-js', get_stylesheet_directory_uri() . '/js/imagesloaded.pkgd.min.js', array('jquery'), '4.1.4'  );
 
+	// Parallax JS
+	wp_enqueue_script( 'parallax-js', get_stylesheet_directory_uri() . '/lib/Parallax/jquery.parallax.min.js', array( 'jquery' ), '2.0.0' );
+
 	// Featherlight JS
 	wp_enqueue_script( 'j-swipe', get_stylesheet_directory_uri() . '/lib/Featherlight/jquery.detect_swipe.js', array('jquery'), '2.1.3' );
 	wp_enqueue_script( 'featherlight-js', get_stylesheet_directory_uri() . '/lib/Featherlight/featherlight.min.js', array('jquery'), '1.7.13' );

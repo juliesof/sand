@@ -30,9 +30,14 @@ get_header();
 						if ( get_row_layout() == 'brand_bar' )
 							get_template_part( 'frontpage-templates/frontpage', 'brands' );
 
+
+						// Parallax Section
+						if ( get_row_layout() == 'testimonial_parallax' )
+							get_template_part( 'frontpage-templates/frontpage', 'parallax' );
+
 						// About Section
-						if ( get_row_layout() == 'about_store' )
-							get_template_part( 'frontpage-templates/frontpage', 'about' );
+						//if ( get_row_layout() == 'about_store' )
+							//get_template_part( 'frontpage-templates/frontpage', 'about' );
 
 						// Secondary Categories
 						if ( get_row_layout() == 'secondary_categories' )

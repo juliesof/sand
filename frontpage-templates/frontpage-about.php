@@ -16,9 +16,9 @@
 			<div class="parallax-image">
 				<?php 
 				// check for content in primary categories
-					$aboutImage 	= get_sub_field( 'image' );
-					$image_srcset 	= wp_get_attachment_image_srcset( $aboutImage, 'large' );
-					$image_url 		= wp_get_attachment_image_url( $aboutImage, 'med' );
+					$aboutImage 	= get_sub_field( 'parallax-image' );
+					$image_srcset 	= wp_get_attachment_image_srcset( $aboutImage, 'xxxlarge' );
+					$image_url 		= wp_get_attachment_image_url( $aboutImage, 'xlarge' );
 					$alt			= get_post_meta( $aboutImage, '_wp_attachment_image_alt', true );
 				?>
 				<img
