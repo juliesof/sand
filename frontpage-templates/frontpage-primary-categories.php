@@ -19,10 +19,13 @@
 			// get primary categories posts
 			$name 		= get_sub_field( 'category_name' );	
 			$image  	= get_sub_field( 'category_image' );
-		
+			$link		= get_sub_field( 'category_link' );
+			$link 		= '#primary-categories';
+
 			$category_list[] = array(
 				'name'  	=> $name,
 				'image'		=> $image,
+				'link'		=> $link,
 			);
 		endwhile; 
 ?>
@@ -35,100 +38,108 @@
 			<div class="category-grid-wrapper">
 				<div class="category-grid">
 					<article class="fp-category-item fp-grid-sizer"></article>
-					<article id="<?php echo $category_list[0]['name'] ?>" class="fp-category-item fp-category-tall">
+					<article id="<?php echo esc_attr($category_list[0]['name']); ?>" class="fp-category-item fp-category-tall">
 						<div class="category-image">
-							<div class="category-image-wrapper">
+							<a class="category-link" href="<?php echo esc_attr($category_list[0]['link']); ?>">
+								<div class="category-image-wrapper">
+									<?php
+										// get srcset and image attributes
+										$id		= $category_list[0]['image'];
+										$srcset = wp_get_attachment_image_srcset( $id, 'x-large' );
+										$url 	= wp_get_attachment_image_url( $id, 'large' );
+										$alt	= get_post_meta( $id, '_wp_attachment_image_alt', true );
+									?>
+									<img
+										src="<?php echo esc_attr($url); ?>"
+										srcset="<?php echo esc_attr($srcset); ?>"
+										alt="<?php echo esc_attr($alt); ?>"
+										sizes="(min-width: 1200px) 444px, (min-width: 992px) 372px, (min-width: 768px) 276px, (min-width: 576px) 520px, 95vw"
+									>
+								</div>
 								<div class="fp-category-name">
 									<h3>
 										<?php echo $category_list[0]['name'] ?>
 									</h3>
 								</div>
-								<?php
-									// get srcset and image attributes
-									$id		= $category_list[0]['image'];
-									$srcset = wp_get_attachment_image_srcset( $id, 'x-large' );
-									$url 	= wp_get_attachment_image_url( $id, 'large' );
-									$alt	= get_post_meta( $id, '_wp_attachment_image_alt', true );
-								?>
-								<img
-									src="<?php echo esc_attr($url); ?>"
-									srcset="<?php echo esc_attr($srcset); ?>"
-									alt="<?php echo esc_attr($alt); ?>"
-									sizes="(min-width: 768px) 40vw, 95vw"
-								>
-							</div>
+							</a>
 						</div>
 					</article>
-					<article id="<?php echo $category_list[1]['name'] ?>" class="fp-category-item fp-category-wide">
+					<article id="<?php echo esc_attr($category_list[1]['name']) ?>" class="fp-category-item fp-category-wide">
 						<div class="category-image">
-							<div class="category-image-wrapper">
+							<a class="category-link" href="<?php echo esc_attr($category_list[1]['link']); ?>">
+								<div class="category-image-wrapper">
+									<?php
+										// get srcset and image attributes
+										$id		= $category_list[1]['image'];
+										$srcset = wp_get_attachment_image_srcset( $id, 'x-large' );
+										$url 	= wp_get_attachment_image_url( $id, 'large' );
+										$alt	= get_post_meta( $id, '_wp_attachment_image_alt', true );
+									?>
+									<img
+										src="<?php echo esc_attr($url); ?>"
+										srcset="<?php echo esc_attr($srcset); ?>"
+										alt="<?php echo esc_attr($alt); ?>"
+										sizes="(min-width: 1200px) 666px, (min-width: 992px) 558px, (min-width: 768px) 414px, (min-width: 576px) 520px, 95vw"
+									>
+								</div>
 								<div class="fp-category-name">
 									<h3>
 										<?php echo $category_list[1]['name'] ?>
 									</h3>
 								</div>
-								<?php
-									// get srcset and image attributes
-									$id		= $category_list[1]['image'];
-									$srcset = wp_get_attachment_image_srcset( $id, 'x-large' );
-									$url 	= wp_get_attachment_image_url( $id, 'large' );
-									$alt	= get_post_meta( $id, '_wp_attachment_image_alt', true );
-								?>
-								<img
-									src="<?php echo esc_attr($url); ?>"
-									srcset="<?php echo esc_attr($srcset); ?>"
-									alt="<?php echo esc_attr($alt); ?>"
-									sizes="(min-width: 768px) 60vw, 95vw"
-								>
 							</div>
-						</div>
+						</a>
 					</article>
-					<article id="<?php echo $category_list[2]['name'] ?>" class="fp-category-item fp-category-square">
+					<article id="<?php echo esc_attr($category_list[2]['name']); ?>" class="fp-category-item fp-category-square">
 						<div class="category-image">
-							<div class="category-image-wrapper">
+							<a class="category-link" href="<?php echo esc_attr($category_list[2]['link']); ?>">
+								<div class="category-image-wrapper">
+									<?php
+										// get srcset and image attributes
+										$id			= $category_list[2]['image'];
+										$srcset = wp_get_attachment_image_srcset( $id, 'x-large' );
+										$url 		= wp_get_attachment_image_url( $id, 'large' );
+										$alt		= get_post_meta( $id, '_wp_attachment_image_alt', true );
+									?>
+									<img
+										src="<?php echo esc_attr($url); ?>"
+										srcset="<?php echo esc_attr($srcset); ?>"
+										alt="<?php echo esc_attr($alt); ?>"
+										sizes="(min-width: 1200px) 333px, (min-width: 992px) 279px, (min-width: 768px) 207px, (min-width: 576px) 520px, 95vw"
+									>
+								</div>
 								<div class="fp-category-name">
 									<h3>
 										<?php echo $category_list[2]['name'] ?>
 									</h3>
 								</div>
-								<?php
-									// get srcset and image attributes
-						 			$id			= $category_list[2]['image'];
-						 			$srcset = wp_get_attachment_image_srcset( $id, 'x-large' );
-						 			$url 		= wp_get_attachment_image_url( $id, 'large' );
-						 			$alt		= get_post_meta( $id, '_wp_attachment_image_alt', true );
-								?>
-								<img
-									src="<?php echo esc_attr($url); ?>"
-									srcset="<?php echo esc_attr($srcset); ?>"
-									alt="<?php echo esc_attr($alt); ?>"
-									sizes="(min-width: 768px) 30vw, 95vw"
-								>
-							</div>
+							</a>
 						</div>
 					</article>
-					<article id="<?php echo $category_list[3]['name'] ?>" class="fp-category-item fp-category-square">
+					<article id="<?php echo esc_attr($category_list[3]['name']); ?>" class="fp-category-item fp-category-square">
 						<div class="category-image">
-							<div class="category-image-wrapper">
+							<a class="category-link" href="<?php echo esc_attr($category_list[3]['link']); ?>">
+								<div class="category-image-wrapper">
+									<?php
+										// get srcset and image attributes
+										$id			= $category_list[3]['image'];
+										$srcset 	= wp_get_attachment_image_srcset( $id, 'x-large' );
+										$url 		= wp_get_attachment_image_url( $id, 'large' );
+										$alt		= get_post_meta( $id, '_wp_attachment_image_alt', true );
+									?>
+									<img
+										src="<?php echo esc_attr($url); ?>"
+										srcset="<?php echo esc_attr($srcset); ?>"
+										alt="<?php echo esc_attr($alt); ?>"
+										sizes="(min-width: 1200px) 333px, (min-width: 992px) 279px, (min-width: 768px) 207px, (min-width: 576px) 520px, 95vw"
+									>
+								</div>
 								<div class="fp-category-name">
 									<h3>
 										<?php echo $category_list[3]['name'] ?>	
 									</h3>
 								</div>
-								<?php
-									// get srcset and image attributes
-									$id			= $category_list[3]['image'];
-									$srcset = wp_get_attachment_image_srcset( $id, 'x-large' );
-									$url 		= wp_get_attachment_image_url( $id, 'large' );
-									$alt		= get_post_meta( $id, '_wp_attachment_image_alt', true );
-								?>
-								<img
-									src="<?php echo esc_attr($url); ?>"
-									srcset="<?php echo esc_attr($srcset); ?>"
-									alt="<?php echo esc_attr($alt); ?>"
-									sizes="(min-width: 768px) 30vw, 95vw"
-								>
-							</div>
+							</a>
 						</div>
 					</article>
 				</div>	<!-- .category-grid -->

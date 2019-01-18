@@ -59,7 +59,8 @@ get_header();
 								$variant_image = $image['image'];
 								//srcset
 								$image_srcset = wp_get_attachment_image_srcset($variant_image,'full');
-								$image_url = wp_get_attachment_image_url( $variant_image, "full" );
+								// src should be the 991px wide photo hence "med-large"
+								$image_url = wp_get_attachment_image_url( $variant_image, "med-large" );
 								$image_alt = get_post_meta( $variant_image, '_wp_attachment_image_alt', true); ?>
 							<div class="single-image-wrapper variant<?php echo $num; if($num == 0){echo " current";}?>">
 								<div class="item-image-sizer">

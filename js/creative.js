@@ -44,10 +44,11 @@ var $body = $('body');
 		$brandCarousel.owlCarousel({
 			responsive: {
 				0: {
-					items: 3,
-					margin: 75,
+					items: 2,
+					margin: 50,
 				},
 				768: {
+					center: true,
 					items: 3,
 					margin: 200
 				}
@@ -59,7 +60,6 @@ var $body = $('body');
 			lazyLoad: true,
 			mouseDrag: true,
 			touchDrag: true,
-			center: true,
 		});//Front Page Brand Carousel
 
 		// Front Page Featured Items
@@ -164,13 +164,12 @@ var $body = $('body');
 		//Create function for determining which zoom plugin to use based on screen size
 		$.fn.chooseZoomPlugin = function() {
 			// return this.css('justify-content') == 'center';
-			//returns true if grid items are centered align, gallery is single column layout
-			// check for screen size and initiate appropriate zoom plugin
+			// fires appropriate zoom js at major media query at 768px based on column layout
+			// check for screen size based on css media query breakpoints
 			$currentImage = $( '.single-image-wrapper.current' );
 			if ( this.css('justify-content') == 'center' ) {
-				$currentSource = $currentImage.find( 'img' ).attr( 'src' );
-				$brokenSource = $currentSource.split( '.jpg' );
-				$bigImage = $brokenSource[0] + '-991x991.jpg';
+				// search for src image to be used as zoom
+				$bigImage = $currentImage.find( 'img' ).attr( 'src' );
 				$currentImage.zoom({
 					url: $bigImage,
 					on: 'toggle',
@@ -181,7 +180,6 @@ var $body = $('body');
 				});
 			}
 		}
-
 
 		// Check and intialize immediately upon page load
 		$galleryContainer.chooseZoomPlugin();	

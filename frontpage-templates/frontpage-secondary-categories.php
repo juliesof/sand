@@ -16,7 +16,7 @@
  
 <section id="secondary-featured" class="container">
 	<div class="row no-gutters content-wrapper">
-		<div id="featured-block" class="col-md-6">
+		<div id="featured-block" class="col-sm-6">
 			<div id="featured-carousel" class="owl-carousel">
 				<?php 
 				// check for content in Primary Categories
@@ -34,7 +34,7 @@
 						<img
 							src="<?php echo esc_attr($image_url); ?>"
 							srcset="<?php echo esc_attr($image_srcset); ?>"
-							sizes="(min-width: 768px) 45vw, 95vw"
+							sizes="(min-width: 1200px) 525px, (min-width: 992px) 450px, (min-width: 768px) 330px, (min-width: 576px) 245px, 95vw"
 							alt="<?php echo $alt ?>"
 						>
 						<div class="overlay-title">
@@ -54,7 +54,7 @@
 				?>
 			</div><!-- #featured-carousel -->
 		</div><!-- #featured-block -->
-		<div id="secondary-block" class="col-md-6">
+		<div id="secondary-block" class="col-sm-6">
 			<?php 
 			//retrieve and store the two categories' meta information
 				if( have_rows( 'secondary_blocks' )): 
@@ -81,33 +81,37 @@
 					$cat_link2		= get_sub_field( 'category_link_2' );
 				endwhile;endif;
 			?>
-			<div class="secondary-box">
-				<a href="<?php echo esc_attr($cat_link1); ?>" class="secondary-category-block block-1">
-					<div class="secondary-image-frame">
-						<img
-							src="<?php echo esc_attr($image_url1); ?>"
-							srcset="<?php echo esc_attr($image_srcset1); ?>"
-							sizes="(min-width: 768px) 45vw, 95vw"
-							alt="<?php echo $alt1 ?>"
-						>
-					</div>
-					<div class="secondary-title">
-						<h3><?php echo $cat_title1 ?></h3>
-					</div>
-				</a><!-- .secondary-category-block 1 -->
-				<a href="<?php echo esc_attr($cat_link2); ?>" class="secondary-category-block block-2">
-					<div class="secondary-image-frame">
-						<img
-							src="<?php echo esc_attr($image_url2); ?>"
-							srcset="<?php echo esc_attr($image_srcset2); ?>"
-							sizes="(min-width: 768px) 45vw, 95vw"
-							alt="<?php echo $alt2 ?>"
-						>
-					</div>
-					<div class="secondary-title">
-						<h3><?php echo $cat_title2 ?></h3>
-					</div>	
-				</a><!-- .secondary-category-block 2 -->
+			<div class="secondary-frame">
+				<div class="secondary-box">
+					<a href="<?php echo esc_attr($cat_link1); ?>">
+						<div class="secondary-image-frame">
+							<img
+								src="<?php echo esc_attr($image_url1); ?>"
+								srcset="<?php echo esc_attr($image_srcset1); ?>"
+								sizes="(min-width: 1200px) 525px, (min-width: 992px) 450px, (min-width: 768px) 330px, (min-width: 576px) 245px, 95vw"
+								alt="<?php echo $alt1 ?>"
+							>
+						</div>
+						<div class="secondary-title">
+							<h3><?php echo $cat_title1 ?></h3>
+						</div>
+					</a><!-- .secondary-category-block 1 -->
+				</div>
+				<div class="secondary-box">
+					<a href="<?php echo esc_attr($cat_link2); ?>">
+						<div class="secondary-image-frame">
+							<img
+								src="<?php echo esc_attr($image_url2); ?>"
+								srcset="<?php echo esc_attr($image_srcset2); ?>"
+								sizes="(min-width: 1200px) 525px, (min-width: 992px) 450px, (min-width: 768px) 330px, (min-width: 576px) 245px, 95vw"
+								alt="<?php echo $alt2 ?>"
+							>
+						</div>
+						<div class="secondary-title">
+							<h3><?php echo $cat_title2 ?></h3>
+						</div>	
+					</a><!-- .secondary-category-block 2 -->
+				</div>
 			</div><!-- .secondary-flex-box -->
 		</div><!-- #secondary-block -->
 	</div><!-- .row -->

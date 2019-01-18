@@ -117,9 +117,16 @@ div#wrapper-footer {
     background: #08242f;
     color: #fff;
 }
+
+/*----- General Front Page*/
+.fp-section-header {
+	width: 100%;
+}
+
 /*----- Owl Carousel Hero */
 #hero {
 	height: 50vh;
+	padding-bottom: 2rem;
 }
 #hero-carousel {
 	display: flex;
@@ -184,11 +191,26 @@ div#wrapper-footer {
 	bottom: 0;
 	justify-content: center;
 }
-/*----- General Front Page*/
-.fp-section-header {
-	width: 100%;
+
+/*----- Frontpage About */
+/* vertical spacing */
+#fp-about {
+	padding-top: 2rem;
 }
-/*Frontpage Primary Categories*/
+.about-content-block,
+.about-image-block {
+	margin-bottom: 1rem;
+}
+/* text alignment */
+.about-content-block {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+
+/*----- Frontpage Primary Categories */
 #primary-categories {
 	padding-top: 2rem;
 	padding-bottom: 2rem;
@@ -210,8 +232,9 @@ div#wrapper-footer {
 }
 .category-image {
 	padding: 10px;
-	width: 100%;
 	height: 100%;
+	width: 100%;
+	position: relative;
 }
 .category-image-wrapper {
 	cursor: pointer;
@@ -219,18 +242,22 @@ div#wrapper-footer {
 	justify-content: center;
 	align-items: center;
 	height: 100%;
+	width: 100%;
 	overflow: hidden;
 }
 .category-image-wrapper img {
+	flex-shrink: 0;
+	max-width: unset;
+	min-width: 100%;
+	min-height: 100%;
 	transform: scale(1);
 	-webkit-transform: scale(1);
 	-ms-transform: scale(1);
 	transition:transform .3s linear;
 	-webkit-transition:transform .3s linear;
 	-moz-transition:transform .3s linear;
-	z-index: -1;
 }
-.category-image-wrapper:hover img {
+.category-link:hover img {
 	transform: scale(1.05);
 	-webkit-transform: scale(1.05);
 	-ms-transform: scale(1.05);
@@ -243,11 +270,12 @@ div#wrapper-footer {
 	position: absolute;
 	text-align: center;
 	top: 50%;
-	transform: translateY(-50%);
+	left: 50%;
+	transform: translate(-50%, -50%);
 	width: 100%;
 }
 
-/*----- Frontpage Logo Slider*/
+/*----- Frontpage Logo Slider */
 #logo-slider {
 	padding-bottom: 2rem;
 	margin-top: 1rem;
@@ -267,62 +295,14 @@ div#wrapper-footer {
 	display: none;
 }
 
-/*----- Frontpage About*/
-/*#fp-about {
-
-}*/
-/*.about-parallax-container {
-	position: relative;
-	width: 100%;
-}
-.parallax-image {
-	height: 75vw;
-	width: 100%;
-	overflow: hidden;
-	position: relative;
-}
-.parallax-image::before {
-	content: '';
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	background-color: rgba(50,50,50,.3);
-	z-index: 1;
-}
-.parallax-image img {
-	position: absolute;
-	bottom: 50vw;
-	bottom: 0;
-	transition: 0s linear;
-	-webkit-transition: 0s linear;
-	-moz-transition: 0s linear;
-}
-.parallax-text {
-	position: absolute;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	z-index: 2;
-}
-.parallax-text .text-inner {
-	color: #fff;
-	text-align: center;
-	max-width: 80%;
-}*/
-
-/*----- Frontpage Parallax*/
+/*----- Frontpage Parallax */
 /* necessary for parallax JS to work */
 #fp-parallax {
 	background: transparent;
 	height: 65vh;
 	/*position: relative;*/
 	margin-bottom: 2rem;
+	overflow: hidden;
 }
 /* center and fill image inside container */
 /*.parallax-image {
@@ -350,7 +330,7 @@ div#wrapper-footer {
 	position: absolute;
 }
 
-/*----- Frontpage Featured and Secondary Categories*/
+/*----- Frontpage Featured and Secondary Categories */
 /* Make the featured slider and secondary categories the same height */
 #featured-block,
 #secondary-block {
@@ -395,27 +375,37 @@ div#wrapper-footer {
 	color: #fff;
 }
 /*-- Secondary Categories */
-.secondary-box {
+/* this frame holds both secondary category boxes */
+.secondary-frame {
 	height: 100%;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
 }
-/*each category takes half the height of container less for spacing*/
-.secondary-category-block {
+/* each category box takes half the height of the container less for spacing */
+.secondary-box {
+	width: 100%;
 	height: 48%;
 	overflow: hidden;
 	position: relative;
 }
+/* image frame is needed to center and fill child image */
 .secondary-image-frame {
 	height: 100%;
+	width: 100%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
+/* if images are too short or narrow they will stretch to fill frame without skewing aspect ratio */
 .secondary-image-frame img {
+	flex-shrink: 0;
+	min-width: 100%;
+	min-height: 100%;
+	max-width: unset;
 }
+/* center each category title in its respective frame */
 .secondary-title {
 	color: #fff;
 	text-align: center;
@@ -581,7 +571,7 @@ div#wrapper-footer {
 	width: 50%;
 }
 
-/*----- Single Items Page */
+/*----- Items Single Page */
 .site-main {
 	padding-top: 0;
 }
@@ -660,17 +650,29 @@ div#wrapper-footer {
 	}
 }
 @media(min-width: 576px) {
+	/*----- Frontpage Featured and Secondary Categories*/
+	#featured-block,
+	#secondary-block {
+		height: 100vh;
+		max-height: 75vw;
+	}
+	#featured-block {
+		padding-right: 10px;
+	}
+	#secondary-block {
+		padding-left: 10px;
+	}
 	/*----- Store Tour Page*/
 	.tour-tile,
 	.tour-tile-sizer {
 		width:  50%;
 	}
-	/*----- Item Archive Page */
+	/*----- Items Archive Page */
 	.item-tile,
 	.item-tile-sizer {
 		width:  33.333%;
 	}
-	/*----- Single Item Page */
+	/*----- Items Single Page */
 	.variant-images-wrapper {
 		width: 500px;
 		height:0;
@@ -800,7 +802,16 @@ div#wrapper-footer {
 	.hours-column {
 		padding-bottom: 0px;
 	}
-	/*----- Frontpage Category*/
+	/*----- Frontpage About*/
+	/* vertical spacing */
+	#fp-about {
+		padding-top: 2rem;
+	}
+	.about-content-block,
+	.about-image-block {
+		margin-bottom: 2rem;
+	}
+	/*----- Frontpage Primary Categories*/
 	.fp-category-item {
 		width: 10%;
 	}
@@ -868,6 +879,40 @@ div#wrapper-footer {
 }
 /* Large Landscape screens */
 @media(min-width: 992px) {	
+	/*----- Frontpage Primary Categories*/
+	/* change overall height of grid and items */
+	.fp-category-item.fp-category-tall {
+		height: 600px;
+	}
+	.fp-category-item.fp-category-wide {
+		height: 300px;
+	}
+	.fp-category-item.fp-category-square {
+		height: 300px;
+	}
+	/*----- Frontpage Featured and Secondary Categories*/
+	/*#secondary-featured {
+		height: 90vh;
+	}*/
+	/*#secondary-featured .content-wrapper {
+		height: 100%;
+	}*/
+	/* Featured Carousel */
+	/*#featured-carousel,
+	#featured-carousel .owl-stage-outer,
+	#featured-carousel .owl-stage,
+	#featured-carousel .owl-item {
+		height: 100%;
+	}
+	.featured-slide {
+		height: 100%;
+	}
+	#featured-carousel .featured-slide img {
+		max-width: unset;
+	}*/
+	/* Secondary Categories */
+	
+	/*----- Items Archive Page */
 	.item-tile .archive-variants:first-child {
 		opacity: 1;
 		transition: opacity .3s ease;
@@ -882,36 +927,7 @@ div#wrapper-footer {
 	.item-tile:hover .archive-variants:last-child {
 		opacity: 1;
 	}
-	/*----- Frontpage Featured and Secondary Categories*/
-	/*#secondary-featured {
-		height: 90vh;
-	}*/
-	/*#secondary-featured .content-wrapper {
-		height: 100%;
-	}*/
-	/* Featured Carousel */
-	#featured-block {
-		/*padding: 60px;*/
-		padding-right: 30px;
-	}
-	/*#featured-carousel,
-	#featured-carousel .owl-stage-outer,
-	#featured-carousel .owl-stage,
-	#featured-carousel .owl-item {
-		height: 100%;
-	}
-	.featured-slide {
-		height: 100%;
-	}
-	#featured-carousel .featured-slide img {
-		max-width: unset;
-	}*/
-	/* Secondary Categories */
-	#secondary-block {
-		/*padding: 60px;*/
-		padding-left: 30px;
-	}
-	/*----- Single Items Page */
+	/*----- Items Single Page */
 	.content-main {
 		padding-top: 30px;
 	}
@@ -934,6 +950,17 @@ div#wrapper-footer {
 	}
 }
 @media(min-width: 1200px) {
+	/*----- Frontpage Primary Categories*/
+	/* change overall height of grid and items */
+	.fp-category-item.fp-category-tall {
+		height: 750px;
+	}
+	.fp-category-item.fp-category-wide {
+		height: 375px;
+	}
+	.fp-category-item.fp-category-square {
+		height: 375px;
+	}
 	/*----- Store Tour Page*/
 	.tour-tile,
 	.tour-tile-sizer {
