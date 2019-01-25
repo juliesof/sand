@@ -44,7 +44,7 @@
 					$child_subcats[] = $list_object;
 					//$child_subcats[] = array ($csl => $list_object);
 				}
-				?><pre><?php print_r($child_subcats);?></pre><?php
+				?><pre><?php //print_r($child_subcats);?></pre><?php
 				//print_r($child_subcats[$csl]);
 			} //end child subcat list foreach
 		endforeach; //end posts as post foreach loop

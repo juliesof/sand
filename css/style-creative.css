@@ -37,15 +37,27 @@ a {
 /*----- Header */
 /*-- super header */
 .superscript-header-infobar {
-	background-color: #81E9D3; /*riptide*/
-	color: #333;
+	background-color: #5DBCD2; /*riptide*/
+	color: white;
 	padding: .5rem 1rem;
 	position: relative;
 	z-index: 3;/* keep it above the navbar's box shadow */
 }
+.superscript-header-infobar a {
+	color: white;
+}
 .super-header-content {
 	display: flex;
 	justify-content: space-between;
+}
+.left-promo {
+	font-size: 30px;
+}
+.right-promo {
+	font-size: 20px;
+}
+.super-header-content span {
+	padding-left: 10px;
 }
 /*-- stock header */
 /* don't need side margin with centered columns */
@@ -707,6 +719,12 @@ div#wrapper-footer {
 	}
 }
 @media(max-width: 767px) {
+	/* Header */
+		.left-promo,
+		.right-promo {
+			width: 100%;
+		}
+
 	/*----- Footer */
 	.map-column,
 	.hours-column,
