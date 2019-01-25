@@ -41,9 +41,9 @@ $container = get_theme_mod( 'understrap_container_type' );
 				<span><a href=""><i class="fab fa-instagram"></i></a></span>
 			</span>
 			<span class="right-promo"> 
-				<a href="#"><span>Store Hours</span></a>
+				<span><a href="#store-hours">Store Hours</a></span>
 				<span>|</span>
-				<a href="#"><span>Get in Touch</span></a>
+				<span><a href="#">Get in Touch</a></span>
 			</span>
 		</div>
 	</div>

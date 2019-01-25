@@ -114,12 +114,15 @@ get_header();
 						echo $item_text;
 					?>
 				</div>
-				<?php if($shipping_available) { ?>
+				<?php if($shipping_available): ?>
 					<div>
 						Microcopy for purchase and shipping
 					</div>
-					<!-- print contact-->
-				<?php } ?>
+					
+				<?php 
+						echo do_shortcode('[ninja_form id=1]');
+					endif; 
+				?>
 				
 
 				</section>
