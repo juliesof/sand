@@ -30,6 +30,17 @@
 * Large Frontpage Testimonials
 */
 
+/* Colors */
+a:focus {
+	color: #5DBCD2; /*light blue*/
+	color: #272B4D;	/*navy blue*/
+	color: #232533; /*black*/
+	color: #E5D025; /*mustard yellow*/
+	color: #9E0246; /*deep pink*/
+	color: #4ECC78; /*medium green*/
+}
+
+
 /*----- Base */
 a {
 	color: #d64669;
