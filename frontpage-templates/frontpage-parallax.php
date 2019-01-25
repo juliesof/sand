@@ -36,7 +36,7 @@
 				$testimonialText = get_sub_field( 'text_area' );
 				$testimonialPerson = get_sub_field( 'person' );
 			?>
-			<div class="testimonial-block">
+			<div class="testimonial-block container">
 				<p><?php echo $testimonialText; ?></p>
 				<p><?php echo $testimonialPerson; ?></p>
 			</div>

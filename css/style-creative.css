@@ -61,56 +61,67 @@ a {
 /*----- Site Ankler / Site Footer */
 /*-- Ankler */
 .ankler-canvas {
+	background: #7cafaf;
+	background: linear-gradient(-26deg, #576f76, #63918e,#9fcfb9);
 	padding-top: 2rem;
 	padding-bottom: 2rem;
-	background: linear-gradient(45deg, #d1f5d4, #1b4848,#d1f5d4);
-	background: #7cafaf;
 }
+/* business hours is the second flex-child up through large screens */
 .hours-column {
-	text-align: center;
+	order: 1;
 	padding-bottom: 30px;
+	text-align: center;
 }
+/* flex box for easy spacing */
 .store-hours-wrapper {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	padding: 2rem;
+	padding: 4rem 2rem;
 	border-radius: 7px;
 	background: #f8f9fa;
 	color: #212529;
-	height: 100%;
 	width: 100%;
 }
+/* business hours font styling */
 .day-block {
 	font-size: 1.1rem;
 	font-weight: bold;
 	margin-bottom: 0;
 }
+/* even spacing */
 .hour-block:last-child {
 	margin-bottom: 0;
 }
-.footer-image-wrapper {
+/* spacing */
+.map-column {
+	padding-bottom: 30px;
+}
+/* Map frame is the first flex-child up to large screens. Always 16/9 aspect ration */
+.map-frame {
+	order: 0;
+	width: 100%;
 	height: 0;
 	overflow: hidden;	
-	padding-top: 62.5%;
+	padding-top: 133%;
 	position: relative;
 }
-.footer-image-wrapper img {
-	left: 50%;
+.map-frame iframe {
 	position: absolute;
-	top: 50%;
-	transform: translate(-50%,-50%);
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	border: 0;
+}
+/* facebook feed column is always last flex-child */
+.fb-column {
+	order: 2;
 }
 .footer-fb-wrapper {
 	height: 100%;
 	overflow: hidden;
 	position: relative;
-}
-.footer-fb-wrapper img {
-	left: 50%;
-	position: absolute;
-	top: 0;
-	transform: translate(-50%);
 }
 /*-- Footer */
 div#wrapper-footer {
@@ -300,7 +311,7 @@ div#wrapper-footer {
 #fp-parallax {
 	background: transparent;
 	height: 65vh;
-	/*position: relative;*/
+	position: relative;
 	margin-bottom: 2rem;
 	overflow: hidden;
 }
@@ -328,6 +339,14 @@ div#wrapper-footer {
 	color: #fff;
 	padding: 20px 15px;
 	position: absolute;
+	top: 50%;
+	left: 0;
+	width: 100%;
+	display: flex;
+	transform: translateY(-50%);
+	-webkit-transform: translateY(-50%);
+	justify-content: center;
+	flex-direction: column;
 }
 
 /*----- Frontpage Featured and Secondary Categories */
@@ -650,6 +669,10 @@ div#wrapper-footer {
 	}
 }
 @media(min-width: 576px) {
+	/*----- Footer */
+	.map-frame {
+		padding-top: 100%;
+	}
 	/*----- Frontpage Featured and Secondary Categories*/
 	#featured-block,
 	#secondary-block {
@@ -661,6 +684,10 @@ div#wrapper-footer {
 	}
 	#secondary-block {
 		padding-left: 10px;
+	}
+	/*----- Frontpage Parallax */
+	.static-text {
+		flex-direction: row;
 	}
 	/*----- Store Tour Page*/
 	.tour-tile,
@@ -680,6 +707,12 @@ div#wrapper-footer {
 	}
 }
 @media(max-width: 767px) {
+	/*----- Footer */
+	.map-column,
+	.hours-column,
+	.fb-column {
+		padding: 30px;
+	}
 	/*----- Floating Menu for Items Archive Page and Store Tour Page */
 	#items-archive-page,
 	#store-tour-page {
@@ -799,6 +832,14 @@ div#wrapper-footer {
 		flex-direction: column;
 	}
 	/*----- Footer */
+	/* Spacing when Business Hours is next to map */
+	.store-hours-wrapper {
+		padding: 1rem 2rem;
+		height: 100%;
+	}
+	.map-frame {
+		padding-top: 62.5%;
+	}
 	.hours-column {
 		padding-bottom: 0px;
 	}
@@ -870,15 +911,13 @@ div#wrapper-footer {
 		height: 100%;
 	}
 }
-/* Medium Horizontal screens */
-@media(min-width: 768px) and (orientation: landscape) {
-	/* Frontpage Parallax */
-	.parallax-image {
-		height: 75vh;
-	}
-}
 /* Large Landscape screens */
-@media(min-width: 992px) {	
+@media(min-width: 992px) {
+	/*----- Footer */
+	/* Map Column Sizing */
+	.map-frame {
+		padding-top: 50%;
+	}
 	/*----- Frontpage Primary Categories*/
 	/* change overall height of grid and items */
 	.fp-category-item.fp-category-tall {
@@ -944,12 +983,32 @@ div#wrapper-footer {
 }
 /* Large Landscape screens */
 @media(min-width: 992px) and (orientation: landscape) {
+	/*----- Hero */
 	/*set hero height temporarily until page loads*/
 	#hero {
 		height: 100vh;
 	}
+	/*----- Frontpage Parallax */
+	#fp-parallax {
+		height: 75vh;
+	}
 }
 @media(min-width: 1200px) {
+	/*----- Footer */
+	/* Business hours is first flex-child for x-larger screens */
+	.hours-column {
+		order: 0;
+	}
+	/* Map Column is second flex-child for x-larger screens */
+	.map-column {
+		order: 1;
+		padding-bottom: 0;
+	}
+	/* Map Column Sizing */
+	.map-frame {
+		height: 100%;
+		min-height: 500px;
+	}
 	/*----- Frontpage Primary Categories*/
 	/* change overall height of grid and items */
 	.fp-category-item.fp-category-tall {

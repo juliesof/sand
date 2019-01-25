@@ -17,7 +17,7 @@
 
 		<div class="row">
 
-			<div class="col-md-3 hours-column ankle-column">
+			<div class="hours-column col-md-6 col-xl-3">
 				<div class="store-hours-wrapper">	
 					<h3 class="hours-title">
 						<?php echo $hours_title; ?>
@@ -42,14 +42,28 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-md-6 map-column ankle-column">
-				<div class="footer-image-wrapper">
-					<?php echo wp_get_attachment_image(124, "full"); ?>
+			<div class="map-column ankle-column col-xl-6">
+				<div class="map-frame">
+					<iframe 
+						width="1110"
+						height="500" 
+						frameborder="0" style="border:0" 
+						src="https://maps.google.com/maps/embed/v1/place?key=AIzaSyAoTh6EEpN7jFS98deVPOyw8YHu_nxNt4M&q=21326+E+Sharp+Street,Rock+Hall,+MD+21661"
+						allowfullscreen>
+					</iframe>
 				</div>
 			</div>
-			<div class="col-md-3 fb-column ankle-column">
+			<div class="fb-column ankle-column col-md-6 col-xl-3">
+				<div id="fb-root"></div>
+					<script>(function(d, s, id) {
+						var js, fjs = d.getElementsByTagName(s)[0];
+						if (d.getElementById(id)) return;
+						js = d.createElement(s); js.id = id;
+						js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2&appId=323087218077045';
+						fjs.parentNode.insertBefore(js, fjs);
+					}(document, 'script', 'facebook-jssdk'));</script>
 				<div class="footer-fb-wrapper">
-					<?php echo wp_get_attachment_image(125, "full"); ?>
+					<div class="fb-page" data-href="https://www.facebook.com/HickoryStickStore/" data-tabs="timeline" data-small-header="true" data-width="500px" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false"><blockquote cite="https://www.facebook.com/HickoryStickStore/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/HickoryStickStore/">The Hickory Stick, Ltd.</a></blockquote></div>
 				</div>
 			</div>
 		</div>
