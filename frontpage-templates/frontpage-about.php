@@ -9,38 +9,41 @@
 
 ?>
 
-<section id="fp-about" class="container-fluid">
+<section id="fp-about" class="container">
 	<div class="row">
-		
-		<div class="about-parallax-container">
-			<div class="parallax-image">
+		<div class="col-md-5 about-content-block">
+			<?php
+				// retrieve About content
+				$aboutTitle = get_sub_field( 'about_title' );
+				$aboutText = get_sub_field( 'about_text' );
+			?>
+			<h3 class="fp-about-title">
 				<?php 
-				// check for content in primary categories
-					$aboutImage 	= get_sub_field( 'image' );
-					$image_srcset 	= wp_get_attachment_image_srcset( $aboutImage, 'large' );
-					$image_url 		= wp_get_attachment_image_url( $aboutImage, 'med' );
-					$alt			= get_post_meta( $aboutImage, '_wp_attachment_image_alt', true );
+					echo $aboutTitle;
 				?>
+			</h3>
+			<p class="fp-about-text">
+				<?php 
+					echo $aboutText;
+				?>
+			</p>
+		</div>
+		<div class="col-md-7 about-image-block">
+			<?php 
+			// check for content in primary categories
+				$aboutImage 	= get_sub_field( 'about_image' );
+				$image_srcset 	= wp_get_attachment_image_srcset( $aboutImage, 'xxxlarge' );
+				$image_url 		= wp_get_attachment_image_url( $aboutImage, 'xlarge' );
+				$alt			= get_post_meta( $aboutImage, '_wp_attachment_image_alt', true );
+			?>
+			<div id="fp-about-image">
 				<img
-					id="parallax-image"
 					src="<?php echo esc_attr($image_url); ?>"
 					srcset="<?php echo esc_attr($image_srcset); ?>"
-					sizes="100vw"
+					sizes="(min-width: 768px) 50vw, 100vw"
 					alt="<?php echo $alt ?>"
-				>
+				/>
 			</div>
-			<div class="parallax-text">
-				<?php
-					// retrieve About text
-					$aboutText = get_sub_field( 'text' );
-				?>
-				<h3 class="text-inner">
-					<?php 
-						echo $aboutText;
-					?>
-				</h3>
-			</div>
-		</div><!-- .about-parallax-container -->
-
+		</div>
 	</div><!-- .row -->
 </section><!-- .container -->

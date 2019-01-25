@@ -12,6 +12,26 @@ var $body = $('body');
 	
 	// check if on the homepage
 	if( $body.hasClass('home') ){
+		
+		//----- About Section
+		var $fpAbout 	= $('#fp-about');
+			$fpAboutImg = $('.parallax-image > img');
+
+		$(window).scroll(function() {
+			var $oT  = $fpAbout.offset().top,  //vertical position of top of About Section from top of document
+				$aH  = $fpAbout.outerHeight(),//the outer height of the About Section includes border but not margin
+				$wH  = $(window).height(),   //height of viewport window
+				$top = $(this).scrollTop(); //amount user scrolls
+			if ($top > ($oT - $wH) && $top < ($oT + $aH)){ //when About Section is in the viewport
+				var $parallaxY = ($top - $oT + $wH)/3; //starts at zero when About Section enters viewport and increases quarter fast
+				$fpAboutImg.css({"transform" : "translateY("+$parallaxY+"px)"});
+				$fpAboutImg.css({"transform" : "translateY(0px)"});
+			//}else if($top > ($oT + $aH - 35 )) { //when About Section is above viewport
+				//$fpAboutImg.css({"transform" : "translateY(-50px)"});
+			}else { //when About Section is below or above viewport
+				$fpAboutImg.css({"transform" : ""});
+			}
+		});
 
 		// Hero Owl Carousel
 		var $heroCarousel = $('#hero-carousel');
@@ -44,11 +64,10 @@ var $body = $('body');
 		$brandCarousel.owlCarousel({
 			responsive: {
 				0: {
-					items: 2,
-					margin: 50,
+					items: 3,
+					margin: 75,
 				},
 				768: {
-					center: true,
 					items: 3,
 					margin: 200
 				}
@@ -60,6 +79,7 @@ var $body = $('body');
 			lazyLoad: true,
 			mouseDrag: true,
 			touchDrag: true,
+			center: true,
 		});//Front Page Brand Carousel
 
 		// Front Page Featured Items
@@ -79,9 +99,9 @@ var $body = $('body');
 		// Front Page parallax
 		var $parallaxContainer 	= $( '#fp-parallax' );
 			$parallaxItem		= $( '>.parallax-image' );
-		$( '#fp-parallax' ).parallax({
-			speed: .3,
-			sliderSelector: '>.parallax-image',
+		$parallaxContainer.parallax({
+			speed: -.2,
+			sliderSelector: $parallaxItem,
 		});
 
 	} // End Home Functions
@@ -164,12 +184,13 @@ var $body = $('body');
 		//Create function for determining which zoom plugin to use based on screen size
 		$.fn.chooseZoomPlugin = function() {
 			// return this.css('justify-content') == 'center';
-			// fires appropriate zoom js at major media query at 768px based on column layout
-			// check for screen size based on css media query breakpoints
+			//returns true if grid items are centered align, gallery is single column layout
+			// check for screen size and initiate appropriate zoom plugin
 			$currentImage = $( '.single-image-wrapper.current' );
 			if ( this.css('justify-content') == 'center' ) {
-				// search for src image to be used as zoom
-				$bigImage = $currentImage.find( 'img' ).attr( 'src' );
+				$currentSource = $currentImage.find( 'img' ).attr( 'src' );
+				$brokenSource = $currentSource.split( '.jpg' );
+				$bigImage = $brokenSource[0] + '-991x991.jpg';
 				$currentImage.zoom({
 					url: $bigImage,
 					on: 'toggle',
@@ -180,6 +201,7 @@ var $body = $('body');
 				});
 			}
 		}
+
 
 		// Check and intialize immediately upon page load
 		$galleryContainer.chooseZoomPlugin();	
