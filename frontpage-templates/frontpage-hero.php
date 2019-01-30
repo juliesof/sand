@@ -10,18 +10,19 @@
 ?>
 <section id="hero">
 	<div id="hero-carousel" class="owl-carousel cb-hero-slider">
-		<?php if( have_rows( 'hero_images' )): 
-			while ( have_rows( 'hero_images' ) ) : the_row();
+		<?php 
+			if( have_rows( 'hero_images' )): 
+				while ( have_rows( 'hero_images' ) ) : the_row();
 			
-			// get posts
-			$image 		= get_sub_field( 'image' );	
-			$text  		= get_sub_field( 'image_text' );
-			$position 	= get_sub_field( 'text_position' );
+				// get posts
+				$image 		= get_sub_field( 'image' );	
+				$text  		= get_sub_field( 'image_text' );
+				$position = get_sub_field( 'text_position' );
 
-			// get srcset and image attributes
-			$image_srcset 	= wp_get_attachment_image_srcset( $image, 'x-large' );
-			$image_url 		= wp_get_attachment_image_url( $image, 'large' );
-			$alt			= get_post_meta( $image, '_wp_attachment_image_alt', true );
+				// get srcset and image attributes
+				$image_srcset	= wp_get_attachment_image_srcset( $image, 'x-large' );
+				$image_url 		= wp_get_attachment_image_url( $image, 'large' );
+				$alt					= get_post_meta( $image, '_wp_attachment_image_alt', true );
 		?>
 		<div class="hero-image-wrapper"> 
 			<img
@@ -36,7 +37,10 @@
 			</div>
 		</div>
 
-		<?php endwhile; endif; ?>
+		<?php 
+				endwhile; 
+			endif; 
+		?>
 	</div>
 </section>
 	

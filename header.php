@@ -22,6 +22,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 	<meta name="mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-title" content="<?php bloginfo( 'name' ); ?> - <?php bloginfo( 'description' ); ?>">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 	<?php wp_head(); ?>
@@ -36,11 +37,13 @@ $container = get_theme_mod( 'understrap_container_type' );
 	<div class="superscript-header-infobar">
 		<div class="container super-header-content">
 			<span class="left-promo">
-				<a href=""><i class="fab fa-facebook-f"></i></a>
-				<span>Follow Us!</span>
+				<span><a href=""><i class="fab fa-facebook-f"></i></a></span>
+				<span><a href=""><i class="fab fa-instagram"></i></a></span>
 			</span>
 			<span class="right-promo"> 
-				<a href="#"><span>Contact Us!</span></a>
+				<span><a href="#store-hours">Store Hours</a></span>
+				<span>|</span>
+				<span><a href="#">Get in Touch</a></span>
 			</span>
 		</div>
 	</div>

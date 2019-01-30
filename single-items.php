@@ -1,8 +1,7 @@
 <?php
 /**
- * Template Name: Right Sidebar Layout
+ * Template Name: Single Store Product Template
  *
- * This template can be used to override the default template and sidebar setup
  *
  * @package understrap
  */
@@ -93,7 +92,11 @@ get_header();
 				class="col-lg-4 col-xl-5">
 				
 				<section class="item-sidebar-wrapper">
-				
+				<?php
+					$price								= get_field('price');
+					$item_text 						= get_field( 'description' );
+					$shipping_available	 	= get_field('available_for_shipping');
+				?>
 				<div class="item-header">
 					<h2 class="cb-page-header">
 						<?php 
@@ -101,10 +104,26 @@ get_header();
 							echo $title; ?>
 					</h2>
 				</div>
-				<?php
-					$item_text = get_field( 'description' );
-					echo $item_text;
+				<div>
+					<?php
+						echo $price;
+					?>
+				</div>
+				<div>
+					<?php
+						echo $item_text;
+					?>
+				</div>
+				<?php if($shipping_available): ?>
+					<div>
+						Microcopy for purchase and shipping
+					</div>
+					
+				<?php 
+						echo do_shortcode('[ninja_form id=1]');
+					endif; 
 				?>
+				
 
 				</section>
 

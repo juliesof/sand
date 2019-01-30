@@ -30,12 +30,27 @@
 * Large Frontpage Welcome
 * Large Frontpage Testimonials
 */
+<<<<<<< HEAD
 /*----- Typography */
 @font-face {
     font-family: Indie Flower;  
     src: url(../fonts/IndieFlower.ttf);  
     font-weight: normal;  
 }
+=======
+
+/* Colors */
+a:focus {
+	color: #5DBCD2; /*light blue*/
+	color: #272B4D;	/*navy blue*/
+	color: #232533; /*black*/
+	color: #E5D025; /*mustard yellow*/
+	color: #9E0246; /*deep pink*/
+	color: #4ECC78; /*medium green*/
+}
+
+
+>>>>>>> f9b1668d3ec78fb835c6a26e2dbe667f8337a6bb
 /*----- Base */
 a {
 	color: #d64669;
@@ -43,15 +58,27 @@ a {
 /*----- Header */
 /*-- super header */
 .superscript-header-infobar {
-	background-color: #81E9D3; /*riptide*/
-	color: #333;
+	background-color: #5DBCD2; /*riptide*/
+	color: white;
 	padding: .5rem 1rem;
 	position: relative;
 	z-index: 3;/* keep it above the navbar's box shadow */
 }
+.superscript-header-infobar a {
+	color: white;
+}
 .super-header-content {
 	display: flex;
 	justify-content: space-between;
+}
+.left-promo {
+	font-size: 30px;
+}
+.right-promo {
+	font-size: 20px;
+}
+.super-header-content span {
+	padding-left: 10px;
 }
 /*-- stock header */
 /* don't need side margin with centered columns */
@@ -731,6 +758,12 @@ div#wrapper-footer {
 	}
 }
 @media(max-width: 767px) {
+	/* Header */
+		.left-promo,
+		.right-promo {
+			width: 100%;
+		}
+
 	/*----- Footer */
 	.map-column,
 	.hours-column,
