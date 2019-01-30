@@ -1,5 +1,5 @@
 /* Table of Content
-
+* Typography
 * Base
 * Utilities
 * Keyframes
@@ -11,6 +11,7 @@
 * Frontpage Primary Categories
 * Frontpage Parallax
 * Frontpage Featured and Secondary Categories
+* About Page
 * Store Tour Page
 * Items Archive Page
 * Items Single Page
@@ -29,7 +30,12 @@
 * Large Frontpage Welcome
 * Large Frontpage Testimonials
 */
-
+/*----- Typography */
+@font-face {
+    font-family: Indie Flower;  
+    src: url(../fonts/IndieFlower.ttf);  
+    font-weight: normal;  
+}
 /*----- Base */
 a {
 	color: #d64669;
@@ -207,6 +213,10 @@ div#wrapper-footer {
 /* vertical spacing */
 #fp-about {
 	padding-top: 2rem;
+}
+.fp-about-title {
+	font-family: 'Indie Flower', cursive;
+	font-size: 2.2rem;
 }
 .about-content-block,
 .about-image-block {
@@ -433,6 +443,20 @@ div#wrapper-footer {
 	transform: translateY(-50%);
 	width: 100%;
 }
+/*----- About Page */
+/* horizontally center title */
+.page-id-127 .entry-title {
+	text-align: center;
+	font-family: 'Indie Flower', cursive;
+	font-size: 2.7rem;
+}
+/* text content */
+.page-id-127 .entry-content p{
+	font-family: 'Indie Flower', cursive;
+	font-size: 1.6rem;
+}
+
+/* set font */
 
 /*----- Store Tour Page*/
 #store-tour-page {

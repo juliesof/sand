@@ -27,6 +27,7 @@
 					echo $aboutText;
 				?>
 			</p>
+			<button href="/our-story" type="button" class="btn btn-outline-info">Read More</button>
 		</div>
 		<div class="col-md-7 about-image-block">
 			<?php 
