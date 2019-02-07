@@ -37,13 +37,13 @@ $container = get_theme_mod( 'understrap_container_type' );
 	<div class="superscript-header-infobar">
 		<div class="container super-header-content">
 			<span class="left-promo">
-				<span><a href=""><i class="fab fa-facebook-f"></i></a></span>
-				<span><a href=""><i class="fab fa-instagram"></i></a></span>
+				<span class="social-icon"><a href="https://www.facebook.com/HickoryStickStore/"><i class="fab fa-facebook-f"></i></a></span>
+				<span class="social-icon"><a href=""><i class="fab fa-instagram"></i></a></span>
 			</span>
 			<span class="right-promo"> 
-				<span><a href="#store-hours">Store Hours</a></span>
-				<span>|</span>
-				<span><a href="#">Get in Touch</a></span>
+				<span><a href="#store-hours">Hours</a></span>
+				<span class="d-none d-sm-block">|</span>
+				<span><a href="#">Contact</a></span>
 			</span>
 		</div>
 	</div>

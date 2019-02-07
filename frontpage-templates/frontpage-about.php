@@ -11,17 +11,17 @@
 
 <section id="fp-about" class="container">
 	<div class="row">
-		<div class="col-lg-5 about-content-block">
+		<div class="col-md-5 about-content-block">
 			<?php
 				// retrieve About content
 				$aboutTitle = get_sub_field( 'about_title' );
 				$aboutText = get_sub_field( 'about_text' );
 			?>
-			<h3 class="fp-about-title">
+			<h2 class="fp-about-title">
 				<?php 
 					echo $aboutTitle;
 				?>
-			</h3>
+			</h2>
 			<p class="fp-about-text">
 				<?php 
 					echo $aboutText;
@@ -31,7 +31,7 @@
 				<button type="button" class="btn btn-outline-info">Read More</button>
 			</a>
 		</div>
-		<div class="col-lg-7 about-image-block">
+		<div class="col-md-7 about-image-block">
 			<?php 
 			// check for content in primary categories
 				$aboutImage 	= get_sub_field( 'about_image' );

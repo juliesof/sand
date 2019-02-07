@@ -17,8 +17,8 @@
 			while( have_rows( 'brand_logos' )) : the_row(); 
 				$logo 			= get_sub_field( 'logo_image' );
 				$image_srcset 	= wp_get_attachment_image_srcset( $logo, 'large' );
-				$image_url 		= wp_get_attachment_image_url( $image, 'med' );
-				$alt			= get_post_meta( $image, '_wp_attachment_image_alt', true );
+				$image_url 		= wp_get_attachment_image_url( $logo, 'med' );
+				$alt			= get_post_meta( $logo, '_wp_attachment_image_alt', true );
 		?>
 
 			<div class="brand-logo">

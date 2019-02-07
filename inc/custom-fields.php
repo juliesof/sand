@@ -6,8 +6,9 @@
  */
 // Custom post types function 
 function create_custom_post_types(){
-	// Create individual items
-	register_post_type('items',
+
+	// Create individual products
+	register_post_type('products',
 		array(
 		'labels' => array(
 			'name' => __('Store Products'),
@@ -21,6 +22,7 @@ function create_custom_post_types(){
 			),
 		)
 	);
+	
 }
 
 // Hook this custom posts types function into the theme

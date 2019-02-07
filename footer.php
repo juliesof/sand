@@ -25,9 +25,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 				<footer class="site-footer" id="colophon">
 
-					<div class="site-info">
+					<div class="site-info text-center">
 
-						<?php understrap_site_info(); ?>
+						Copyright &copy; The Hickory Stick <?php echo date('Y'); ?> <span class="d-none d-sm-inline">|</span><br class="d-sm-none"/> Site by <a href="https://creativeblazer.com" target="_blank">Creative Blazer</a>
 
 					</div><!-- .site-info -->
 

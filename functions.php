@@ -33,6 +33,21 @@ function add_child_theme_textdomain() {
 }
 add_action( 'after_setup_theme', 'add_child_theme_textdomain' );
 
+// Add ACF Options
+if( function_exists('acf_add_options_page') ) {
+ 
+  // Store Hours
+  $option_page = acf_add_options_page(array(
+    'page_title'      => 'Store Hours',
+    'position'        => '51.3',
+    'icon_url'        => 'dashicons-calendar-alt',
+    'updated_message' => __("Store Hours Updated", 'acf'),
+    'update_button'   => __("Update Hours", 'acf'),
+    'redirect'        => false,
+  ));
+ 
+}
+
 // Add included files
 
 if ( ! defined( 'ABSPATH' ) ) {

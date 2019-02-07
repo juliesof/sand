@@ -10,10 +10,11 @@
 ?>
 			
 <?php 
+	
 	// check for content in primary categories
 	if( have_rows( 'primary_categories' )): 
 	
-	// $category_list = array(); //create array to store category objects
+		// $category_list = array(); //create array to store category objects
 		$category_list = array();
 		while ( have_rows( 'primary_categories' ) ) : the_row();
 			// get primary categories posts
@@ -32,16 +33,20 @@
 
 	<section id="primary-categories" class="container">
 		<div class="row">
-			<div class="fp-section-header">
-				<h2 class="text-center">Categories</h2>
+			<?php
+				// Blurb description
+				$blurb = get_sub_field( 'primary_categories_blurb' );
+			?>
+			<div class="categories-blurb">
+				<h2 class="text-center"><?php echo $blurb; ?></h2>
 			</div>
 			<div class="category-grid-wrapper">
 				<div class="category-grid">
 					<article class="fp-category-item fp-grid-sizer"></article>
 					<article id="<?php echo esc_attr($category_list[0]['name']); ?>" class="fp-category-item fp-category-tall">
-						<div class="category-image">
+						<div class="category-frame">
 							<a class="category-link" href="<?php echo esc_attr($category_list[0]['link']); ?>">
-								<div class="category-image-wrapper">
+								<div class="category-image-wrapper blue">
 									<?php
 										// get srcset and image attributes
 										$id		= $category_list[0]['image'];
@@ -57,17 +62,17 @@
 									>
 								</div>
 								<div class="fp-category-name">
-									<h3>
+									<h2 class="floating-category-name">
 										<?php echo $category_list[0]['name'] ?>
-									</h3>
+									</h2>
 								</div>
 							</a>
 						</div>
 					</article>
 					<article id="<?php echo esc_attr($category_list[1]['name']) ?>" class="fp-category-item fp-category-wide">
-						<div class="category-image">
+						<div class="category-frame">
 							<a class="category-link" href="<?php echo esc_attr($category_list[1]['link']); ?>">
-								<div class="category-image-wrapper">
+								<div class="category-image-wrapper green">
 									<?php
 										// get srcset and image attributes
 										$id		= $category_list[1]['image'];
@@ -83,17 +88,17 @@
 									>
 								</div>
 								<div class="fp-category-name">
-									<h3>
+									<h2 class="floating-category-name">
 										<?php echo $category_list[1]['name'] ?>
-									</h3>
+									</h2>
 								</div>
 							</div>
 						</a>
 					</article>
 					<article id="<?php echo esc_attr($category_list[2]['name']); ?>" class="fp-category-item fp-category-square">
-						<div class="category-image">
+						<div class="category-frame">
 							<a class="category-link" href="<?php echo esc_attr($category_list[2]['link']); ?>">
-								<div class="category-image-wrapper">
+								<div class="category-image-wrapper pink">
 									<?php
 										// get srcset and image attributes
 										$id			= $category_list[2]['image'];
@@ -109,17 +114,17 @@
 									>
 								</div>
 								<div class="fp-category-name">
-									<h3>
+									<h2  class="floating-category-name">
 										<?php echo $category_list[2]['name'] ?>
-									</h3>
+									</h2>
 								</div>
 							</a>
 						</div>
 					</article>
 					<article id="<?php echo esc_attr($category_list[3]['name']); ?>" class="fp-category-item fp-category-square">
-						<div class="category-image">
+						<div class="category-frame">
 							<a class="category-link" href="<?php echo esc_attr($category_list[3]['link']); ?>">
-								<div class="category-image-wrapper">
+								<div class="category-image-wrapper yellow">
 									<?php
 										// get srcset and image attributes
 										$id			= $category_list[3]['image'];
@@ -135,9 +140,9 @@
 									>
 								</div>
 								<div class="fp-category-name">
-									<h3>
+									<h2 class="floating-category-name">
 										<?php echo $category_list[3]['name'] ?>	
-									</h3>
+									</h2>
 								</div>
 							</a>
 						</div>

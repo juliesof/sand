@@ -17,15 +17,17 @@ var $body = $('body');
 		var $heroCarousel = $('#hero-carousel');
 		//include owl carousel
 		$heroCarousel.owlCarousel({
-			items: 1,
-			loop: true,
-			// autoplay: true,
+			autoplay: true,
+			autoplayHoverPause: true,
+			autoplaySpeed: 400,
 			animateIn: "fadeIn",
 			animateOut: "fadeOut",
+			center: true,
+			items: 1,
+			loop: true,
 			lazyLoad: true,
 			mouseDrag: true,
 			touchDrag: true,
-			center: true
 		});
 
 		// Isotope
@@ -62,7 +64,7 @@ var $body = $('body');
 			touchDrag: true,
 		});//Front Page Brand Carousel
 
-		// Front Page Featured Items
+		// Front Page Featured Products
 		var $featuredCarousel = $('#featured-carousel');
 		$featuredCarousel.owlCarousel({
 			items: 1,
@@ -80,9 +82,18 @@ var $body = $('body');
 		var $parallaxContainer 	= $( '#fp-parallax' );
 			$parallaxItem		= $( '>.parallax-image' );
 		$( '#fp-parallax' ).parallax({
-			speed: .3,
+			speed: .2,
 			sliderSelector: '>.parallax-image',
 		});
+		// Reinitialize parallax when screen width changes
+		$( window ).resize( function() {
+			// kill current to prevent duplicates
+			$( '#fp-parallax' ).parallax( 'destroy' );
+			$( '#fp-parallax' ).parallax({
+				speed: .2,
+				sliderSelector: '>.parallax-image',
+			});
+		} );
 
 	} // End Home Functions
 
@@ -123,39 +134,39 @@ var $body = $('body');
 		});
 	}
 
-	//Items Archive Page
-	if( $body.hasClass( 'post-type-archive-items' ) ) {
+	//Products Archive Page
+	if( $body.hasClass( 'post-type-archive-products' ) ) {
 		// Store Tour isotope gallery tiles
-		var $itemsGallery = $( '#items-archive-gallery' ).isotope({
-			itemSelector: '.item-tile',
+		var $productsGallery = $( '#products-archive-gallery' ).isotope({
+			itemSelector: '.product-tile',
 			percentPosition: true,
 			stagger: 10,
 			masonry: {
-				columnWidth: '.item-tile-sizer',
+				columnWidth: '.product-tile-sizer',
 			},
 		});
 		// Add "floating-menu" class to select objects when the category menu title is clicked
-		var $itemsMenuToggle = $( '.gallery-menu-toggle' );
-			$itemsMenuColumn = $( '#items-archive-menu-column' );
-			$itemsContent = $( '#items-archive-page' );
+		var $productsMenuToggle = $( '.gallery-menu-toggle' );
+			$productsMenuColumn = $( '#products-archive-menu-column' );
+			$productsContent = $( '#products-archive-page' );
 	
-		$itemsMenuToggle.click(function() {
-			$itemsMenuColumn.toggleClass( 'floating-menu' );
-			$itemsContent.toggleClass( 'floating-menu' );
-			if ($itemsContent.hasClass( 'no-height' )) {
-				$itemsContent.removeClass( 'no-height' );
+		$productsMenuToggle.click(function() {
+			$productsMenuColumn.toggleClass( 'floating-menu' );
+			$productsContent.toggleClass( 'floating-menu' );
+			if ($productsContent.hasClass( 'no-height' )) {
+				$productsContent.removeClass( 'no-height' );
 			}
 			else {
 				//queue the removal of height to wait until transition finishes
-				$itemsContent.delay( 300 ).queue( function(){
-					$itemsContent.addClass( 'no-height' ).dequeue();
+				$productsContent.delay( 300 ).queue( function(){
+					$productsContent.addClass( 'no-height' ).dequeue();
 				});
 			}
 		});
 	}
 
-	//Items Single Page
-	if( $body.hasClass('single-items') ) {
+	//Products Single Page
+	if( $body.hasClass('single-products') ) {
 		
 		var $galleryContainer 	= $( '.single-gallery-grid' );
 			$varImages 			= $( '.single-image-wrapper' );
@@ -167,15 +178,17 @@ var $body = $('body');
 			// fires appropriate zoom js at major media query at 768px based on column layout
 			// check for screen size based on css media query breakpoints
 			$currentImage = $( '.single-image-wrapper.current' );
-			if ( this.css('justify-content') == 'center' ) {
+			if ( this.css('justify-content') == 'center' ) { //mobile
 				// search for src image to be used as zoom
+				console.log('mobile');
 				$bigImage = $currentImage.find( 'img' ).attr( 'src' );
 				$currentImage.zoom({
 					url: $bigImage,
 					on: 'toggle',
 				});
 			}else {
-				$currentImage.jzoom({
+				console.log('desktop');
+				$currentImage.jzoom({ //desktop
 					suffixName: '-1024x1024',
 				});
 			}
@@ -191,7 +204,7 @@ var $body = $('body');
 
 		// Recheck and reinitialize on window resize
 		$( window ).resize( function() {
-			// $currentImage.cleanObject( '.item-image-sizer' );
+			// $currentImage.cleanObject( '.product-image-sizer' );
 			$galleryContainer.chooseZoomPlugin();
 		} );
 
@@ -212,7 +225,3 @@ var $body = $('body');
 	}
 
 }); //end document.ready()
-
-		
-		// nav: true,
-		// navText : ["<i class='fa fa-3x fa-chevron-left'></i>","<i class='fa fa-3x fa-chevron-right'></i>"]
