@@ -17,13 +17,18 @@ get_header();
 <div class="wrapper" id="page-wrapper">
 
 	<div class="container" id="content">
-
+		<?php
+			if ( function_exists('yoast_breadcrumb') ) {
+				yoast_breadcrumb( '<p id="breadcrumbs">','</p>' );
+			}
+		?>
 		<div class="row">
 
 			<div
 				class="col-lg-8 col-xl-7"
-				id="single-product-images">
-
+				id="single-product-images"
+			>
+			
 				<main class="content-main wrapper" id="main" role="main">
 					<div class="single-gallery-grid">
 					<?php 
@@ -104,27 +109,24 @@ get_header();
 							echo $title; ?>
 					</h2>
 				</div>
-				<div>
+				<div class="product-price mb-5">
 					<?php
 						echo $price;
 					?>
 				</div>
-				<div>
+				<div class="mb-5">
 					<?php
 						echo $product_text;
 					?>
 				</div>
 				<?php if($shipping_available): ?>
-					<div>
-						Microcopy for purchase and shipping
-					</div>
-					
-				<?php 
-						echo do_shortcode('[ninja_form id=1]');
+					<h4>Ship It To Me</h4>
+					<p>Love this product? You can buy it over the phone and we'll ship it to you!</p>
+					<p>Give us a call at 555-5555 or send a message through the form and we'll be in touch to complete your purchase.</p>
+					<?php 
+							echo do_shortcode('[ninja_form id=1]');
 					endif; 
 				?>
-				
-
 				</section>
 
 			</div>

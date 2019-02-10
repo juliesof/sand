@@ -612,7 +612,11 @@ div#wrapper-footer {
 	max-width: unset;
 	transform: translate(-50%, -50%);
 }
-.tour-title,
+.tour-title{
+	color: #333;
+	text-align: center;
+	margin-top: 5px;
+}
 .product-title {
 	color: #fff;
 	position: absolute;
@@ -803,12 +807,16 @@ div#wrapper-footer {
 }*/
 /*single text content*/
 .product-header {
-	padding: 15px 0;
+	padding: 0 0 15px;
 }
 .product-sidebar-wrapper {
 	max-width: 600px;
 	margin: 0 auto;
 	padding: 0;
+}
+.product-price {
+	font-size: 21px;
+	margin-top: -23px;
 }
 @media(max-width: 400px) {
 	.nav-container .navbar-brand {

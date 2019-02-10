@@ -21,7 +21,7 @@ get_header();
 					while ( have_posts() ) : the_post(); 
 						$product_title = get_the_title();
 						$product_link = get_permalink();
-						$product_text = get_field( 'description' );
+						$price = get_field( 'price' );
 						$product_categories = get_field( 'category' );
 						$images = get_field('product_images');
 						$image0 = $images[0]['image'];
@@ -56,11 +56,15 @@ get_header();
 								>
 								<?php endif; ?>
 							</div>
-							<h4 class="tour-title">
-								<?php echo $tour_title ?>
-							</h4>
+						</div>
+						<div class="tour-title">
+							<?php echo $product_title ?>
+						</div>
+						<div class="text-center" style="color: #333333;">
+							<?php echo $price ?>
 						</div>
 					</a><!-- .product-tile -->
+
 				<?php endwhile;?>
 			</section>
 		</div>
