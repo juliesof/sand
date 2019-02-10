@@ -45,7 +45,6 @@ a:focus {
 	color: #9E0246; /*deep pink*/
 	color: #4ECC78; /*medium green*/
 }
-
 /*----- Typography */
 @font-face {
 	font-family: Indie Flower;
@@ -77,12 +76,12 @@ h1, h2, h3, h4, h5, h6 {
 /*-- super header */
 .superscript-header-infobar {
 	background-color: #5DBCD2; /*riptide*/
-	color: white;
+	color: #fff;
 	position: relative;
 	z-index: 3;/* keep it above the navbar's box shadow */
 }
 .superscript-header-infobar a {
-	color: white;
+	color: #fff;
 }
 .super-header-content {
 	display: flex;
@@ -331,9 +330,10 @@ div#wrapper-footer {
 	padding-left: 15px;
 	padding-right: 15px;
 }
-/* full-width content wrapper */
+/* full-width content wrapper contains absolute isotope items */
 .category-grid-wrapper {
 	width: 100%;
+	position: relative;
 }
 /* Isotope child has various heights for different devices */
 .fp-category-item {
@@ -370,13 +370,29 @@ div#wrapper-footer {
 .category-image-wrapper::after {
 	content: '';
 	position: absolute;
-	top: 10px;
-	right: 10px;
-	bottom: 10px;
-	left: 10px;
-	background-color: rgba(46, 49, 61, 0.3);
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	left: 0px;
+	opacity: .7;
 	transition: opacity .3s ease-in-out;
 	z-index: 99;
+}
+.category-image-wrapper.blue::after {
+	background-color: #a2e5f5;
+}
+.category-image-wrapper.green::after {
+	background-color: #9cf349;
+}
+.category-image-wrapper.pink::after {
+	background-color: #ffa7c4;
+	background-color: #ff99bb;
+	background-color: #e967be;
+}
+.category-image-wrapper.yellow::after {
+	background-color: #eef349;
+	background-color: #4949f3;/*blue*/
+	background-color: #3454e5;
 }
 /* remove color overlay on hover */
 .category-link:hover .category-image-wrapper::after {
@@ -415,8 +431,12 @@ div#wrapper-footer {
 	z-index: 100;
 }
 .floating-category-name {
-	font-size: 1.8rem;
+	font-size: 1.6rem;
 	font-weight: bold;
+	letter-spacing: 1.2px;
+	text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+            	 0px 8px 13px rgba(0,0,0,0.1),
+            	 0px 18px 23px rgba(0,0,0,0.1);
 }
 
 /*----- Frontpage Logo Slider */
@@ -736,6 +756,14 @@ div#wrapper-footer {
 	padding-top: 10px;
 	text-align: center;
 }
+/* remove bullets from list items */
+.menu-filters ul {
+	list-style: none;
+}
+.menu-filters li {
+	cursor: pointer;
+}
+/* isotope gallery items */
 .product-tile,
 .product-tile-sizer {
 	width: 50%;
@@ -924,14 +952,8 @@ div#wrapper-footer {
 		-webkit-transform: translateX(0px);
 	}
 	/* in case category products list is longer than content */
-	.menu-filters {
-		/*padding-top: 30px;
-		padding-bottom: 30px;
-		position: absolute;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;*/
+	.overflow-container {
+		height: 100%;
 		overflow: scroll;
 	}
 	/* resize menu title */
@@ -1000,8 +1022,11 @@ div#wrapper-footer {
 	}
 	/*----- Frontpage Primary Categories */
 	.fp-category-name {
-		top: 35px;
-		transform: translateX( -50% );
+		/*top: 35px;
+		transform: translateX( -50% );*/
+	}
+	.floating-category-name {
+		font-size: 1.8rem;
 	}
 	/*----- Header */
 	.nav-container {
@@ -1163,6 +1188,10 @@ div#wrapper-footer {
 	/*set hero height temporarily until page loads*/
 	#hero {
 		height: 100vh;
+	}
+	/*----- Frontpage Categories */
+	.floating-category-name {
+		font-size: 2.1rem;
 	}
 	/*----- Frontpage Parallax */
 	#fp-parallax {

@@ -11,23 +11,35 @@ get_header();
 
 		<?php 
 			// insert template part with store products categories & subcategories menu
-			get_template_part( 'sidebar-templates/sidebar', 'temp-store-products' );  
+			get_template_part( 'sidebar-templates/sidebar', 'store-products' );  
 		?>
 		
 		<div id="products-archive-gallery-column" class="col-md-9 col-xl-10">
 			<section id="products-archive-gallery">
 				<div class="product-tile-sizer"></div>
-				<?php
+					<?php
+					// loop through the posts and cache their data
 					while ( have_posts() ) : the_post(); 
 						$product_title = get_the_title();
 						$product_link = get_permalink();
 						$price = get_field( 'price' );
 						$product_categories = get_field( 'category' );
+
+						$product_text = get_field( 'description' );
+						$product_categories = get_field( 'product_categories' );
+						// loop through each assigned category and construct a class string
+						// start with empty array, add each category id to it, implode it into string
+						$product_class_array = [];
+						foreach ($product_categories as $cat_id) {
+							$product_class_array[] = "cat-". $cat_id;
+						}
+						$product_class = implode(' ', $product_class_array);
 						$images = get_field('product_images');
 						$image0 = $images[0]['image'];
 						$image1 = $images[1]['image'];
-				?>
-					<a href="<?php echo $product_link ?>" class="product-tile">
+					?>
+					<a href="<?php echo esc_attr( $product_link ) ?>" 
+						class="product-tile <?php echo esc_attr( $product_class );?>">
 						<div class="tile-content-wrapper">
 							<div class="tile-image-wrapper">
 								<?php 
@@ -44,7 +56,7 @@ get_header();
 									src= "<?php echo esc_attr( $image_url0 ); ?>" 
 									srcset = "<?php echo esc_attr( $image_srcset0 ); ?>"
 									sizes = "(min-width: 1200px) 21vw, (min-width: 768px) 25vw, 100vw"
-									alt = "<?php echo $image_alt0; ?>"
+									alt = "<?php echo esc_attr( $image_alt0 ); ?>"
 								>
 								<?php if ($image1): ?>
 								<img 
@@ -52,7 +64,7 @@ get_header();
 									src= "<?php echo esc_attr( $image_url1 ); ?>" 
 									srcset = "<?php echo esc_attr( $image_srcset1 ); ?>"
 									sizes = "(min-width: 1200px) 21vw, (min-width: 768px) 25vw, 100vw"
-									alt = "<?php echo $image_alt1; ?>"
+									alt = "<?php echo esc_attr( $image_alt1 ); ?>"
 								>
 								<?php endif; ?>
 							</div>
