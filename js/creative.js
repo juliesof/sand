@@ -136,6 +136,8 @@ var $body = $('body');
 
 	//Products Archive Page
 	if( $body.hasClass( 'post-type-archive-products' ) ) {
+		
+		
 		// Store Tour isotope gallery tiles
 		var $productsGallery = $( '#products-archive-gallery' ).isotope({
 			itemSelector: '.product-tile',
@@ -145,9 +147,16 @@ var $body = $('body');
 				columnWidth: '.product-tile-sizer',
 			},
 		});
+		// filter items on menu-item click
+		var $productsMenuColumn = $( '#products-archive-menu-column' );
+		$productsMenuColumn.on( 'click', 'li', function() {
+			var filterValue = $(this).attr('data-filter');
+			$productsGallery.isotope({ filter: filterValue });
+		});
+		
+
 		// Add "floating-menu" class to select objects when the category menu title is clicked
 		var $productsMenuToggle = $( '.gallery-menu-toggle' );
-			$productsMenuColumn = $( '#products-archive-menu-column' );
 			$productsContent = $( '#products-archive-page' );
 	
 		$productsMenuToggle.click(function() {

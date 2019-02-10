@@ -2,8 +2,12 @@
 /**
  * ACF post type setup
  *
- * @package understrap
  */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
+
 // Custom post types function 
 function create_custom_post_types(){
 

@@ -5,6 +5,10 @@
  * @package understrap
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+    exit; // Exit if accessed directly.
+}
+
 add_action( 'after_setup_theme', 'cb_custom_add_image_sizes' );
 function cb_custom_add_image_sizes() {
     add_image_size( 'xsmall', 320, 9999 ); // 320px wide unlimited height
