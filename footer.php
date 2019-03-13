@@ -27,7 +27,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 					<div class="site-info text-center">
 
-						Copyright &copy; The Hickory Stick <?php echo date('Y'); ?> <span class="d-none d-sm-inline">|</span><br class="d-sm-none"/> Site by <a href="https://creativeblazer.com" target="_blank">Creative Blazer</a>
+						Copyright &copy; <?php echo date('Y'); ?> The Hickory Stick <span class="d-none d-sm-inline">|</span><br class="d-sm-none"/> Site by <a href="https://creativeblazer.com" target="_blank">Creative Blazer</a>
 
 					</div><!-- .site-info -->
 

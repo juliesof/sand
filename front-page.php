@@ -2,9 +2,11 @@
 /**
  * The template for displaying the front page.
  *
- *
- * @package understrap
  */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
 
 get_header();
 ?>

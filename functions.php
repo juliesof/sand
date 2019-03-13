@@ -33,20 +33,7 @@ function add_child_theme_textdomain() {
 }
 add_action( 'after_setup_theme', 'add_child_theme_textdomain' );
 
-// Add ACF Options
-if( function_exists('acf_add_options_page') ) {
- 
-  // Store Hours
-  $option_page = acf_add_options_page(array(
-    'page_title'      => 'Store Hours',
-    'position'        => '51.3',
-    'icon_url'        => 'dashicons-calendar-alt',
-    'updated_message' => __("Store Hours Updated", 'acf'),
-    'update_button'   => __("Update Hours", 'acf'),
-    'redirect'        => false,
-  ));
- 
-}
+
 
 // Add included files
 
@@ -58,8 +45,8 @@ $child_includes = array(
   '/cb-custom-image-sizes.php',   // Load image srcset
   '/enqueue.php',                 // Child enqueue
   '/custom-fields.php',           // ACF
-  '/cb-taxonomies.php',
-  //'/cb-functions.php',            // Custom PHP functions
+  '/cb-taxonomies.php',           // Custom Taxonomies
+  '/cb-functions.php',            // Custom PHP functions
 );
 
 foreach ( $child_includes as $file ) {

@@ -16,7 +16,25 @@
  
 <section id="secondary-featured" class="container">
 	<div class="row no-gutters content-wrapper">
+		<!-- Featured item carousel -->
 		<div id="featured-block" class="col-sm-6">
+
+			<?php //get featured carousel title
+				$featured_title = get_sub_field( 'featured_title' );
+				if ( $featured_title ):
+				?>
+
+
+				<h2 class="text-center featured-secondary-titles"><?php echo esc_html( $featured_title )?></h2>
+
+				<?php	else:	?>
+
+				<h2 class="text-center featured-secondary-titles">&ensp;</h2>
+
+				<?php	
+				endif;
+			?>
+
 			<div id="featured-carousel" class="owl-carousel">
 				<?php 
 				// check for content in Primary Categories
@@ -34,7 +52,7 @@
 						<img
 							src="<?php echo esc_attr($image_url); ?>"
 							srcset="<?php echo esc_attr($image_srcset); ?>"
-							sizes="(min-width: 1200px) 525px, (min-width: 992px) 450px, (min-width: 768px) 330px, (min-width: 576px) 245px, 95vw"
+							sizes="(min-width: 1200px) 460px, (min-width: 992px) 400px, (min-width: 768px) 300px, 250px"
 							alt="<?php echo $alt ?>"
 						>
 						<div class="overlay-title">
@@ -43,7 +61,7 @@
 								$link  = get_sub_field( 'featured_link' );
 							?>
 							<h3 class="featured-slide-title">
-								<?php echo($title); ?>
+								<?php echo esc_html($title); ?>
 							</h3>
 						</div>
 					</div>
@@ -54,9 +72,27 @@
 				?>
 			</div><!-- #featured-carousel -->
 		</div><!-- #featured-block -->
+
+		<!-- Secondary Categories -->
 		<div id="secondary-block" class="col-sm-6">
-			<?php 
-			//retrieve and store the two categories' meta information
+
+			<?php //get featured carousel title
+				$secondary_category_title = get_sub_field( 'secondary_category_title' );
+				if ( $secondary_category_title ):
+				?>
+
+
+				<h2 class="text-center featured-secondary-titles"><?php echo esc_html( $secondary_category_title )?></h2>
+
+				<?php	else:	?>
+
+				<h2 class="text-center featured-secondary-titles">&ensp;</h2>
+
+				<?php	
+				endif;
+			?>
+
+			<?php //retrieve and store the two categories' meta information
 				if( have_rows( 'secondary_blocks' )): 
 				while( have_rows( 'secondary_blocks' )) : the_row(); 
 					
@@ -88,7 +124,7 @@
 							<img
 								src="<?php echo esc_attr($image_url1); ?>"
 								srcset="<?php echo esc_attr($image_srcset1); ?>"
-								sizes="(min-width: 1200px) 525px, (min-width: 992px) 450px, (min-width: 768px) 330px, (min-width: 576px) 245px, 95vw"
+								sizes="(min-width: 1200px) 460px, (min-width: 992px) 400px, (min-width: 768px) 300px, (min-width: 576px) 250px, 90vw"
 								alt="<?php echo $alt1 ?>"
 							>
 						</div>
@@ -103,7 +139,7 @@
 							<img
 								src="<?php echo esc_attr($image_url2); ?>"
 								srcset="<?php echo esc_attr($image_srcset2); ?>"
-								sizes="(min-width: 1200px) 525px, (min-width: 992px) 450px, (min-width: 768px) 330px, (min-width: 576px) 245px, 95vw"
+								sizes="(min-width: 1200px) 460px, (min-width: 992px) 400px, (min-width: 768px) 300px, (min-width: 576px) 250px, 90vw"
 								alt="<?php echo $alt2 ?>"
 							>
 						</div>

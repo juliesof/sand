@@ -1,9 +1,7 @@
 <?php
 /**
- * Template Name: Single Store Product Template
+ * Template for displaying single product
  *
- *
- * @package understrap
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -14,7 +12,7 @@ get_header();
 
 ?>
 
-<div class="wrapper" id="page-wrapper">
+<div class="wrapper cb-page-content" id="page-wrapper">
 
 	<div class="container" id="content">
 		<?php
@@ -35,9 +33,9 @@ get_header();
 						
 						$images = get_field( 'product_images' );
 						if($images): ?>
-						<!-- comments are for removing white space -->
-						<div class="thumbnail-menu"><!-- 
-						 --><?php 
+						
+						<div class="thumbnail-menu">
+							<?php
 							$num = 0;
 							foreach ($images as $image):
 								$variant_image = $image['image'];
@@ -45,37 +43,39 @@ get_header();
 								$image_url = wp_get_attachment_image_url( $variant_image, "thumbnail" );
 								$image_alt = get_post_meta( $variant_image, '_wp_attachment_image_alt', true); 
 
-								?><!-- 
-								 --><img 
-									src="<?php echo esc_attr($image_url) ?>"
-									data-variant="variant<?php echo $num; ?>"
-									><!-- 
-							 --><?php 
+								?>
+									<img 
+										src="<?php echo esc_attr($image_url) ?>"
+										data-variant="variant<?php echo $num; ?>"
+									/> 
+							 	<?php 
 								$num++;
 							endforeach; 
-						?><!-- 
-						 --></div><!-- .thumbnail-menu -->
+							?>
+						</div><!-- .thumbnail-menu -->
 
 						<div class="variant-images-wrapper">
-						<?php
+					
+							<?php
 							$num = 0;
 							foreach ($images as $image):
 								$variant_image = $image['image'];
-								//srcset
-								$image_srcset = wp_get_attachment_image_srcset($variant_image,'full');
-								// src should be the 991px wide photo hence "med-large"
-								$image_url = wp_get_attachment_image_url( $variant_image, "med-large" );
+								// regular image, no larger than 500px
+								$image_reg = wp_get_attachment_image_url($variant_image,"med-small");
+								// zoom should be the 1024px wide photo hence "large"
+								$image_zoom= wp_get_attachment_image_url( $variant_image, "large" );
+								// al text
 								$image_alt = get_post_meta( $variant_image, '_wp_attachment_image_alt', true); ?>
-							<div class="single-image-wrapper variant<?php echo $num; if($num == 0){echo " current";}?>">
-								<div class="product-image-sizer">
+
+							<!-- standard image and what zoom acts on -->
+							<div class="single-image-wrapper easyzoom--adjacent variant<?php echo $num; if($num == 0){echo " current";}?>">
+								<a href="<?php echo esc_attr( $image_zoom ); ?>">
 									<img 
 										class="image-variant"
-										src= "<?php echo esc_attr( $image_url ); ?>" 
-										srcset = "<?php echo esc_attr( $image_srcset ); ?>"
-										sizes = "(min-width: 768px) 500px, 100vw"
-										alt = "<?php echo $image_alt; ?>"
+										src= "<?php echo esc_attr( $image_reg ); ?>"
+										alt = "<?php echo esc_attr( $image_alt ); ?>"
 									>
-								</div>
+								</a>	
 							</div>
 							<?php
 								$num++;
@@ -98,9 +98,9 @@ get_header();
 				
 				<section class="product-sidebar-wrapper">
 				<?php
-					$price								= get_field('price');
-					$product_text 						= get_field( 'description' );
-					$shipping_available	 	= get_field('available_for_shipping');
+					$price							= get_field('price');
+					$product_text 			= get_field( 'description' );
+					$shipping_available	= get_field('available_for_shipping');
 				?>
 				<div class="product-header">
 					<h2 class="cb-page-header">
@@ -122,7 +122,7 @@ get_header();
 				<?php if($shipping_available): ?>
 					<h4>Ship It To Me</h4>
 					<p>Love this product? You can buy it over the phone and we'll ship it to you!</p>
-					<p>Give us a call at 555-5555 or send a message through the form and we'll be in touch to complete your purchase.</p>
+					<p>Give us a call at (410) 639-7980 or send a message through the form and we'll be in touch to complete your purchase.</p>
 					<?php 
 							echo do_shortcode('[ninja_form id=1]');
 					endif; 

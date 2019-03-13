@@ -2,7 +2,6 @@
 /**
  * Understrap child theme enqueue scripts
  *
- * @package understrap
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -39,8 +38,10 @@ function cb_theme_scripts() {
 	// Featherlight gallery JS
 	wp_enqueue_script( 'featherlight-gallery-js', get_stylesheet_directory_uri() . '/lib/Featherlight/featherlight.gallery.min.js', array('jquery', 'j-swipe'), '1.7.13' );
 
-	// JZoom
-	wp_enqueue_script( 'zoom-js', get_stylesheet_directory_uri() . '/lib/JZoom/jzoom.min.js', array('jquery'), '1.1.6' );
+	// EasyZoom
+	wp_enqueue_style( 'ezzoom-style', get_stylesheet_directory_uri() . '/lib/EasyZoom/css/easyzoom.css', array(), '2.5.2' );
+	wp_enqueue_script( 'ezzoom-js', get_stylesheet_directory_uri() . '/lib/EasyZoom/dist/easyzoom.js', array('jquery'), '2.5.2' );
+	
 	// Jack Zoom
 	wp_enqueue_script( 'jack-zoom', get_stylesheet_directory_uri() . '/lib/Zoom/jquery.zoom.min.js', array('jquery'), '1.7.21' );
 
@@ -49,4 +50,13 @@ function cb_theme_scripts() {
 }
 
 add_action( 'wp_enqueue_scripts', 'cb_theme_scripts' );
-?>
+
+
+// Admin
+function cb_enqueue_admin_style() {
+
+	// Update CSS within in Admin
+	wp_enqueue_style( 'style-admin', get_stylesheet_directory_uri() . '/style-admin.css', array(), '1.0' );
+
+}
+add_action('admin_enqueue_scripts', 'cb_enqueue_admin_style');
